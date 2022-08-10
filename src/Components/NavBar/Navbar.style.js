@@ -4,11 +4,7 @@ export const NavbarStyle = styled.div`
 	/* --element-height: 72px; */
 	/* --element-width-closed: 142px; */
 	/* --element-width-open: 302px; */
-
-	/* border: 1px solid black; */
 	width: 100vw;
-	/* display: flex; */
-	/* flex-direction: row; */
 
 	.top {
 		background-color: #ffffff;
@@ -37,8 +33,6 @@ export const NavbarStyle = styled.div`
 		transition: all ease 1s;
 
 		.menu-button {
-			/* border: 1px solid black; */
-
 			width: 100%;
 			height: 72px;
 			display: flex;
