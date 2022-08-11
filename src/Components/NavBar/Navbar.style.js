@@ -63,6 +63,11 @@ export const NavbarStyle = styled.div`
 				font-size: 1.63rem;
 				transition: all ease 1s;
 			}
+
+			&:hover {
+				cursor: pointer;
+				box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+			}
 		}
 	}
 
@@ -106,5 +111,8 @@ export const NavbarStyle = styled.div`
 				width: 100%;
 			}
 		}
+	}
+	.active {
+		box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
 	}
 `;
