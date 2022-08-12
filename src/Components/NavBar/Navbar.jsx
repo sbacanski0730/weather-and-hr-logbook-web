@@ -12,6 +12,8 @@ import {
 } from 'react-icons/fa';
 import { MdSettings } from 'react-icons/md';
 
+import Button from '../Button/Button';
+
 const Navbar = () => {
 	const [sideMenuOpen, setSideMenuOpen] = useState(false);
 
@@ -24,7 +26,8 @@ const Navbar = () => {
 						<img src={logo} alt='' />
 					</div>
 					<div id='logout-container'>
-						<button>Logout</button>
+						<Button>Log out</Button>
+						{/* <button>Logout</button> */}
 					</div>
 				</div>
 				<div class={`left ${sideMenuOpen ? 'open' : 'closed'}`}>
