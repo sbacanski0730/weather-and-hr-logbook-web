@@ -26,8 +26,13 @@ const Navbar = () => {
 						<img src={logo} alt='' />
 					</div>
 					<div id='logout-container'>
-						<Button>Log out</Button>
-						{/* <button>Logout</button> */}
+						<Button
+							btn_style='no-outline'
+							btn_size='default'
+							btn_hover='underline'
+						>
+							Log out
+						</Button>
 					</div>
 				</div>
 				<div class={`left ${sideMenuOpen ? 'open' : 'closed'}`}>
