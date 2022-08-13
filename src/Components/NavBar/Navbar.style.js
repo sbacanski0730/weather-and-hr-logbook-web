@@ -19,6 +19,12 @@ export const NavbarStyle = styled.div`
 		left: 0;
 		z-index: 99;
 		padding: 0 2.9rem;
+
+		#logout-container {
+			width: 100%;
+			display: flex;
+			justify-content: flex-end;
+		}
 	}
 
 	.left {

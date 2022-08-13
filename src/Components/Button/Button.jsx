@@ -4,7 +4,7 @@ import { ButtonStyle } from './Button.style';
 const Button = ({ children, btn_style, btn_size, btn_hover }) => {
 	const STYLES = ['default', 'no-outline'];
 	const SIZES = ['default', 'wide'];
-	const HOVERS = ['default'];
+	const HOVERS = ['default', 'underline'];
 
 	const checkPropStyle = STYLES.includes(btn_style) ? btn_style : STYLES[0];
 	const checkPropSize = SIZES.includes(btn_size) ? btn_size : SIZES[0];
