@@ -4,7 +4,13 @@ import { PageContainerStyle } from './PageContainer.style';
 const PageContainer = ({ children }) => {
 	return (
 		<>
-			<PageContainerStyle>{children}</PageContainerStyle>
+			<PageContainerStyle>
+				<div className='wrapper'>
+					{/* just for testing reasons */}
+					{/* <div className='dummy-div'>{children}</div> */}
+					{children}
+				</div>
+			</PageContainerStyle>
 		</>
 	);
 };
