@@ -5,6 +5,9 @@ export const NavbarStyle = styled.div`
 	/* --element-width-closed: 142px; */
 	/* --element-width-open: 302px; */
 	width: 100vw;
+	position: absolute;
+	left: 0;
+	top: 0;
 
 	.top {
 		background-color: #ffffff;
