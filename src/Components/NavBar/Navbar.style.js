@@ -34,6 +34,7 @@ export const NavbarStyle = styled.div`
 		box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
 		display: flex;
 		flex-direction: column;
+		position: absolute;
 		z-index: 98;
 
 		transition: all ease 1s;
