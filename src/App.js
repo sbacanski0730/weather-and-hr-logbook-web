@@ -1,11 +1,11 @@
 import Navbar from './components/NavBar/Navbar';
-import PageContainer from './components/PageContainer/PageContainer';
+import LoginPage from './pages/LoginPage/LoginPage.jsx';
+import RegisterPage from './pages/RegisterPage/RegisterPage.jsx';
 
 function App() {
 	return (
 		<>
 			<Navbar />
-			<PageContainer>Hello World</PageContainer>
 		</>
 	);
 }
