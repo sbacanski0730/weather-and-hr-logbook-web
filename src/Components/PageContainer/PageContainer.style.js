@@ -15,6 +15,9 @@ export const PageContainerStyle = styled.div`
 	align-items: flex-end;
 
 	.wrapper {
+		/* border: 1px solid black; */
+		/* background-color: rgba(200, 200, 200, 0.9); */
+
 		width: 100%;
 		height: 100%;
 		padding-top: 148px;

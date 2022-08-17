@@ -1,0 +1,70 @@
+[
+	{
+		"date": "2022-12-21",
+		"time": "02:31",
+		"temperature": "2",
+		"sky_status": "rain",
+		"wind_speed": "30",
+		"pressure": "1022",
+		"content": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga mollitia quibusdam doloremque dicta! Veritatis assumenda nisi quisquam eaque modi nesciunt hic animi in odit, minus deleniti sit sequi perspiciatis vel dolore libero quo natus quibusdam id cupiditate? Consectetur, non animi!",
+		"workers": [
+			{
+				"name": "John Doe"
+			},
+			{
+				"name": "Jack Snow"
+			}
+		]
+	},
+	{
+		"date": "2022-12-12",
+		"time": "05:23",
+		"temperature": "3",
+		"sky_status": "rain-sun",
+		"wind_speed": "28",
+		"pressure": "1000",
+		"content": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga mollitia quibusdam doloremque dicta! Veritatis assumenda nisi quisquam eaque modi nesciunt hic animi in odit, minus deleniti sit sequi perspiciatis vel dolore libero quo natus quibusdam id cupiditate? Consectetur, non animi!",
+		"workers": [
+			{
+				"name": "John Doe"
+			},
+			{
+				"name": "Jack Snow"
+			}
+		]
+	},
+	{
+		"date": "2022-12-04",
+		"time": "09:12",
+		"temperature": "0",
+		"sky_status": "clouds",
+		"wind_speed": "15",
+		"pressure": "1006",
+		"content": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga mollitia quibusdam doloremque dicta! Veritatis assumenda nisi quisquam eaque modi nesciunt hic animi in odit, minus deleniti sit sequi perspiciatis vel dolore libero quo natus quibusdam id cupiditate? Consectetur, non animi!",
+		"workers": [
+			{
+				"name": "John Doe"
+			},
+			{
+				"name": "Jack Snow"
+			}
+		]
+	},
+	{
+		"date": "2022-11-10",
+		"time": "01:59",
+		"temperature": "1",
+		"sky_status": "wind",
+		"wind_speed": "50",
+		"pressure": "1010",
+		"content": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga mollitia quibusdam doloremque dicta! Veritatis assumenda nisi quisquam eaque modi nesciunt hic animi in odit, minus deleniti sit sequi perspiciatis vel dolore libero quo natus quibusdam id cupiditate? Consectetur, non animi!",
+		"workers": [
+			{
+				"name": "John Doe"
+			},
+			{
+				"name": "Jack Snow"
+			}
+		]
+	}
+]
