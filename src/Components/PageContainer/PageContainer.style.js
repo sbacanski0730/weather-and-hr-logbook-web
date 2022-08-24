@@ -14,7 +14,7 @@ export const PageContainerStyle = styled.div`
 	justify-content: flex-end;
 	align-items: flex-end;
 
-	.wrapper {
+	.page-container-wrapper {
 		/* border: 1px solid black; */
 		/* background-color: rgba(200, 200, 200, 0.9); */
 

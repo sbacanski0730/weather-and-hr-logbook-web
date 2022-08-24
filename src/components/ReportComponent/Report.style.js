@@ -1,38 +1,119 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ReportStyle = styled.div`
-	/* border: 1px solid red; */
-	border: 1px solid rgba(100, 100, 100, 0.5);
-
+	/* border: 1px solid black; */
+	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+	border: 1px solid transparent;
+	width: 100%;
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	padding: 0.5rem 0.4rem;
-	/* white-space: nowrap; */
-	margin-bottom: 0.3rem;
+	padding: 0.4rem 0.8rem;
 	cursor: default;
+	user-select: none;
+
+	transition: all 0.2s ease;
 
 	&:hover {
-		border: 1px solid rgba(0, 0, 0, 0.8);
+		box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.9);
 	}
 
-	.element {
-		/* border: 1px solid black; */
-		/* height: 100%; */
-		/* width: 100%; */
+	.report-data {
+		flex: 2;
+
+		width: 100%;
 		display: flex;
 		align-items: center;
-		white-space: nowrap;
-		font-size: 1.5rem;
+		justify-content: center;
+		transition: all 0.4s ease;
+		p,
+		.icon {
+			padding: 0 0.5rem;
+			font-size: 1.3rem;
+			white-space: nowrap;
+		}
 	}
 
-	.content {
-		/* border: 1px solid black; */
-
-		max-width: 500px;
-		text-overflow: ellipsis;
+	.report-content {
+		flex: 3;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		height: 100%;
 		overflow: hidden;
-		display: inline-block;
+
+		p {
+			width: 90%;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			font-size: 1.3rem;
+			padding-left: 0.9rem;
+		}
 	}
+
+	.left-icons {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		padding-top: 0.2rem;
+
+		.edit-icon {
+			font-size: 1.2rem;
+
+			&:hover {
+				cursor: pointer;
+			}
+		}
+
+		#icon {
+			display: none;
+		}
+	}
+
+	${({ isOpen }) => {
+		if (isOpen) {
+			return css`
+				&:hover {
+					border: 1px solid transparent;
+				}
+
+				.report-data {
+					flex-direction: column;
+					align-items: flex-start;
+
+					p,
+					.icon {
+						/* TODO: to style; */
+						/* margin: 0.4rem 0; */
+					}
+				}
+
+				.report-content {
+					align-items: center;
+					justify-content: flex-start;
+
+					p {
+						width: 100%;
+						padding: 1rem 1rem;
+						white-space: normal;
+						text-align: left;
+						text-justify: inter-word;
+						line-height: 1.5;
+						font-size: 1.2rem;
+					}
+				}
+
+				.left-icons {
+					align-items: center;
+					justify-content: flex-start;
+					gap: 1rem;
+
+					#icon {
+						display: block;
+					}
+				}
+			`;
+		}
+	}}
 `;
