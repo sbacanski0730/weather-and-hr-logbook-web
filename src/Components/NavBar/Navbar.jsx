@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../../assets/Logo Option 2.svg';
+import { Link } from 'react-router-dom';
 import { NavbarStyle } from './Navbar.style.js';
 import {
 	FaIndent,
@@ -35,33 +36,33 @@ const Navbar = () => {
 						</Button>
 					</div>
 				</div>
-				<div class={`left ${sideMenuOpen ? 'open' : 'closed'}`}>
+				<div class='left'>
 					<div className='menu-button' onClick={handleMenuOpen}>
 						{sideMenuOpen ? <FaOutdent /> : <FaIndent />}
 					</div>
 					<div className='element'>
 						<FaListUl />
-						<p>Reports</p>
+						<span>Reports</span>
 					</div>
 					<div className='element'>
 						<FaCalendarAlt />
-						<p>Calendar</p>
+						<span>Calendar</span>
 					</div>
 					<div className='element'>
 						<FaPlus />
-						<p>Add Raport</p>
+						<span>Add Raport</span>
 					</div>
 					<div className='element'>
 						<FaUsers />
-						<p>Workers</p>
+						<span>Workers</span>
 					</div>
 					<div className='element'>
 						<FaUser />
-						<p>Profile</p>
+						<span>Profile</span>
 					</div>
 					<div className='element'>
 						<MdSettings />
-						<p>Settings</p>
+						<span>Settings</span>
 					</div>
 				</div>
 			</NavbarStyle>

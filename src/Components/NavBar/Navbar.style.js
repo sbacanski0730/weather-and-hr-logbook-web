@@ -5,9 +5,9 @@ export const NavbarStyle = styled.div`
 	/* --element-width-closed: 142px; */
 	/* --element-width-open: 302px; */
 	width: 100vw;
-	position: absolute;
-	left: 0;
-	top: 0;
+	/* position: absolute; */
+	/* left: 0; */
+	/* top: 0; */
 
 	.top {
 		background-color: #ffffff;
@@ -42,15 +42,19 @@ export const NavbarStyle = styled.div`
 
 		transition: all ease 1s;
 
+		width: 142px;
+
 		.menu-button {
 			width: 100%;
 			height: 72px;
 			display: flex;
 			flex-direction: row;
-			/* justify-content: flex-end; */
-			/* align-items: center; */
+
 			margin-top: 0;
 			background-color: #d9d9d9;
+
+			justify-content: center;
+			align-items: center;
 
 			& > svg {
 				font-size: 3rem;
@@ -64,62 +68,43 @@ export const NavbarStyle = styled.div`
 			display: flex;
 			flex-direction: row;
 			align-items: center;
+			justify-content: center;
 			margin: 10px 0;
-			& > svg {
+
+			svg {
 				font-size: 2.5rem;
 				transition: all ease 1s;
 			}
-			& > p {
-				font-size: 1.63rem;
-				transition: all ease 1s;
+
+			span {
+				position: absolute;
+				left: 80%;
+				padding: 0.4rem 0.7rem;
+				font-size: 1.3rem;
+				white-space: nowrap;
+				background-color: #ffffff;
+				opacity: 0;
+
+				transition: all 0.4s ease;
 			}
 
 			&:hover {
 				cursor: pointer;
 				box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+
+				span {
+					box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+					left: calc(100% + 15px);
+					opacity: 1;
+				}
 			}
 		}
 	}
 
 	.closed {
-		width: 142px;
 		.menu-button {
 			justify-content: center;
 			align-items: center;
-		}
-		.element {
-			& > svg {
-				width: 100%;
-			}
-
-			& > p {
-				display: none;
-			}
-		}
-	}
-
-	.open {
-		width: 302px;
-		.menu-button {
-			display: flex;
-			flex-direction: row;
-			justify-content: flex-end;
-			align-items: center;
-
-			& > svg {
-				margin-right: 10%;
-				font-size: 2.5rem;
-			}
-		}
-
-		.element {
-			& > svg {
-				width: 100%;
-			}
-
-			& > p {
-				width: 100%;
-			}
 		}
 	}
 	.active {
