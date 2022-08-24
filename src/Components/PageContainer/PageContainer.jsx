@@ -5,7 +5,7 @@ const PageContainer = ({ children }) => {
 	return (
 		<>
 			<PageContainerStyle>
-				<div className='wrapper'>
+				<div className='page-container-wrapper'>
 					{/* just for testing reasons */}
 					{/* <div className='dummy-div'>{children}</div> */}
 					{children}

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ReportStyle } from './Report.style';
-import { FaWind, FaTrash } from 'react-icons/fa';
+import { FaWind, FaTrash, FaEdit } from 'react-icons/fa';
 
 const Report = ({
 	date,
@@ -9,17 +9,28 @@ const Report = ({
 	sky_status,
 	wind_speed,
 	pressure,
-	content,
+	report_content,
 }) => {
+	const [isOpen, setIsOpen] = useState(false);
+
 	return (
-		<ReportStyle>
-			<p className='element'>{date}</p>
-			<p className='element'>{temperature} &#176;C</p>
-			<FaWind className='element' />
-			<p className='element'>{wind_speed} km/h</p>
-			<p className='element'>{pressure} haP</p>
-			<p className='element content'>{content}</p>
-			<FaTrash className='element' />
+		<ReportStyle isOpen={isOpen} onClick={() => setIsOpen(!isOpen)}>
+			<div className='report-data'>
+				<p>{date}</p>
+				<p>{temperature}°C</p>
+				<div className='icon'>
+					<FaWind />
+				</div>
+				<p>{wind_speed}km/h</p>
+				<p>{pressure}haP</p>
+			</div>
+			<div className='report-content'>
+				<p>{report_content}</p>
+			</div>
+			<div className='left-icons'>
+				<FaTrash className='edit-icon' />
+				<FaEdit className='edit-icon' id='icon' />
+			</div>
 		</ReportStyle>
 	);
 };
