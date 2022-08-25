@@ -1,20 +1,21 @@
 import styled, { css } from 'styled-components';
 
 export const ReportStyle = styled.div`
-	/* border: 1px solid black; */
-	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5);
+	/* box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.5); */
 	border: 1px solid transparent;
+	background-color: #ffffff;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
-	padding: 0.4rem 0.8rem;
+	justify-content: space-between;
+	padding: 0.6rem 0.6rem;
 	cursor: default;
 	user-select: none;
 
 	transition: all 0.2s ease;
 
 	&:hover {
-		box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.9);
+		box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.4);
 	}
 
 	.report-data {
@@ -75,7 +76,7 @@ export const ReportStyle = styled.div`
 		if (isOpen) {
 			return css`
 				&:hover {
-					border: 1px solid transparent;
+					/* border: 1px solid transparent; */
 				}
 
 				.report-data {

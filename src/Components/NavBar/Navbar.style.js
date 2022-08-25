@@ -4,10 +4,6 @@ export const NavbarStyle = styled.div`
 	/* --element-height: 72px; */
 	/* --element-width-closed: 142px; */
 	/* --element-width-open: 302px; */
-	width: 100vw;
-	/* position: absolute; */
-	/* left: 0; */
-	/* top: 0; */
 
 	.top {
 		background-color: #ffffff;
@@ -56,7 +52,7 @@ export const NavbarStyle = styled.div`
 			justify-content: center;
 			align-items: center;
 
-			& > svg {
+			svg {
 				font-size: 3rem;
 				transition: all ease 2s;
 			}
