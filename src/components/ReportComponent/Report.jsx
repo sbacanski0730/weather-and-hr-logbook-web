@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { FaEdit, FaTrash, FaWind } from 'react-icons/fa';
 import { ReportStyle } from './Report.style';
-import { FaWind, FaTrash, FaEdit } from 'react-icons/fa';
 
 const Report = ({
 	date,
