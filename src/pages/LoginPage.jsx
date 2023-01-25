@@ -11,6 +11,7 @@ import {
 	Link,
 } from '@mui/material';
 
+// function will be move to auth context
 const handleLogin = (email, password, repeatPassword) => {
 	console.log(email);
 	console.log(password);
@@ -89,6 +90,8 @@ const LoginPage = () => {
 							</Button>
 							<Grid container>
 								<Grid item xs>
+									{/* TODO: add functionality to this */}
+									{/* this is link "empty" - work in progress  */}
 									<Link variant='body2' component={ReactLink} to='/'>
 										Forgot password?
 									</Link>
