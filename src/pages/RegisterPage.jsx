@@ -2,29 +2,31 @@ import React, { useState } from 'react';
 import { Link as ReactLink } from 'react-router-dom';
 import {
 	Container,
+	Grid,
+	Box,
 	Paper,
 	TextField,
-	Box,
-	Typography,
 	Button,
-	Grid,
+	Typography,
 	Link,
 } from '@mui/material';
 
 // TODO: move this function to auth context
-const handleLogin = (email, password) => {
+const handleRegister = (email, password, repeatPassword) => {
 	console.log(email);
 	console.log(password);
+	console.log(repeatPassword);
 };
 
-const LoginPage = () => {
+const RegisterPage = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [repeatPassword, setRepeatPassword] = useState('');
 
 	return (
+		// this Container cover all page
 		<Container
 			sx={{
-				width: '100%',
 				height: '100%',
 				display: 'flex',
 				alignItems: 'center',
@@ -43,57 +45,57 @@ const LoginPage = () => {
 							// component='h1'
 							variant='h3'
 						>
-							Sign In
+							Sign Up
 						</Typography>
-						<Box
-							component='form'
-							sx={{
-								mt: 1,
-							}}
-						>
+						<Box component='form' sx={{ mt: 1 }}>
 							<TextField
 								required
-								fullWidth
 								margin='normal'
-								label='Email'
+								label='Email Address'
 								type='text'
-								onChange={e => setEmail(e.target.value)}
+								fullWidth
+								onChange={e => {
+									setEmail(e.target.value);
+								}}
 							/>
 							<TextField
 								required
-								fullWidth
 								margin='normal'
 								label='Password'
 								type='password'
-								onChange={e => setPassword(e.target.value)}
+								fullWidth
+								onChange={e => {
+									setPassword(e.target.value);
+								}}
+							/>
+							<TextField
+								required
+								margin='normal'
+								label='Repeat Password'
+								type='password'
+								fullWidth
+								onChange={e => {
+									setRepeatPassword(e.target.value);
+								}}
 							/>
 							<Button
-								fullWidth
 								variant='contained'
+								fullWidth
 								sx={{ mt: 3, mb: 2 }}
-								onClick={() => handleLogin(email, password)}
+								onClick={() =>
+									handleRegister(email, password, repeatPassword)
+								}
 							>
-								Login
+								Register
 							</Button>
-							<Grid container>
-								{/* TODO: add functionality to this */}
-								{/* this is link "empty" - work in progress  */}
-								<Grid item xs>
-									<Link //
-										component={ReactLink}
-										to='/'
-										variant='body2'
-									>
-										Forgot password?
-									</Link>
-								</Grid>
+							<Grid container sx={{ justifyContent: 'flex-end' }}>
 								<Grid item>
 									<Link
-										component={ReactLink}
-										to='/register'
 										variant='body2'
+										component={ReactLink}
+										to='/login'
 									>
-										Don't have an account? Register
+										Already have an account? Login
 									</Link>
 								</Grid>
 							</Grid>
@@ -105,4 +107,4 @@ const LoginPage = () => {
 	);
 };
 
-export default LoginPage;
+export default RegisterPage;
