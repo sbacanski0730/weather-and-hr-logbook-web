@@ -1,16 +1,18 @@
-import Navbar from './components/NavBar/Navbar';
-import PageContainer from './components/PageContainer/PageContainer.jsx';
-import LoginPage from './pages/LoginPage/LoginPage.jsx';
-import RegisterPage from './pages/RegisterPage/RegisterPage.jsx';
-import ReportsPage from './pages/ReportsPage/ReportsPage.jsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import CssBaseline from '@mui/material/CssBaseline';
+import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
 
 function App() {
 	return (
 		<>
-			<Navbar />
-			<PageContainer>
-				<ReportsPage />
-			</PageContainer>
+			<CssBaseline />
+			<BrowserRouter>
+				<Routes>
+					<Route path='/login' exact element={<LoginPage />} />
+					<Route path='/register' exact element={<RegisterPage />} />
+				</Routes>
+			</BrowserRouter>
 		</>
 	);
 }
