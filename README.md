@@ -4,7 +4,7 @@
 
 ## 💻 Demo
 
-Check my web app: [not on production!]
+Check app website: [not on production!]
 
 ## Features
 
@@ -37,8 +37,7 @@ npm start
 ```
 
 ## 🚀 Build with
-
--   [React](https://reactjs.org/)
+[![React](https://skillicons.dev/icons?i=react&theme=light)](https://pl.reactjs.org/) [![Material-UI](https://skillicons.dev/icons?i=materialui&theme=light)](https://mui.com/)
 
 ## ☔ Project API on GitHub
 
