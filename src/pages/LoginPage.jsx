@@ -23,6 +23,7 @@ const LoginPage = () => {
 
 	return (
 		<Container
+			maxWidth={false}
 			sx={{
 				width: '100%',
 				height: '100%',
@@ -39,10 +40,7 @@ const LoginPage = () => {
 							alignItems: 'center',
 						}}
 					>
-						<Typography
-							// component='h1'
-							variant='h3'
-						>
+						<Typography component='h1' variant='h1'>
 							Sign In
 						</Typography>
 						<Box
@@ -82,7 +80,7 @@ const LoginPage = () => {
 									<Link //
 										component={ReactLink}
 										to='/'
-										variant='body2'
+										variant='h5'
 									>
 										Forgot password?
 									</Link>
@@ -91,7 +89,7 @@ const LoginPage = () => {
 									<Link
 										component={ReactLink}
 										to='/register'
-										variant='body2'
+										variant='h5'
 									>
 										Don't have an account? Register
 									</Link>
