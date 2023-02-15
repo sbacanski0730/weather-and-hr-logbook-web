@@ -41,10 +41,7 @@ const RegisterPage = () => {
 							alignItems: 'center',
 						}}
 					>
-						<Typography
-							// component='h1'
-							variant='h3'
-						>
+						<Typography component='h1' variant='h1'>
 							Sign Up
 						</Typography>
 						<Box component='form' sx={{ mt: 1 }}>
@@ -90,11 +87,7 @@ const RegisterPage = () => {
 							</Button>
 							<Grid container sx={{ justifyContent: 'flex-end' }}>
 								<Grid item>
-									<Link
-										variant='body2'
-										component={ReactLink}
-										to='/login'
-									>
+									<Link variant='h5' component={ReactLink} to='/login'>
 										Already have an account? Login
 									</Link>
 								</Grid>
