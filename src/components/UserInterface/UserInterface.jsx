@@ -10,7 +10,6 @@ import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import { Button } from '@mui/material/';
 import IconButton from '@mui/material/IconButton';
-// import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -44,8 +43,19 @@ const UserInterface = () => {
 	return (
 		<>
 			{/* Topbar */}
-			<AppBar position='fixed'>
-				<Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+			<AppBar
+				position='fixed'
+				// color='primary'
+			>
+				{/* <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}> */}
+				<Box
+					sx={{
+						display: 'flex',
+						justifyContent: 'space-between',
+						mx: 1,
+						my: '4px',
+					}}
+				>
 					<Box sx={{ display: 'flex', flexDirection: 'row' }}>
 						<IconButton
 							size='24px'
@@ -54,7 +64,9 @@ const UserInterface = () => {
 						>
 							<MenuIcon />
 						</IconButton>
-						<Typography variant='h3'>WH-Logbook</Typography>
+						<Typography variant='h3' color='textPrimary'>
+							WH-Logbook
+						</Typography>
 					</Box>
 					<Box sx={{ display: 'flex', flexDirection: 'row' }}>
 						<IconButton
@@ -101,7 +113,7 @@ const UserInterface = () => {
 							<Typography variant='h4'>Logout</Typography>
 						</Button>
 					</Box>
-				</Toolbar>
+				</Box>
 			</AppBar>
 
 			{/* Sidebar */}
@@ -145,52 +157,55 @@ const UserInterface = () => {
 								icon: <SettingsIcon sx={{ fontSize: '30px' }} />,
 								path: '/settings',
 							},
-						].map(({ name, icon, path }) => {
+						].map(({ name, icon, path }, index) => {
 							return (
-								<ListItem
-									disablePadding
-									sx={
-										{
-											// border: '1px solid red',
-										}
-									}
-								>
-									<ListItemButton
-										divider={true}
-										onClick={handleClose}
+								<React.Fragment key={index}>
+									<ListItem
+										disablePadding
 										sx={
 											{
-												// border: '1px solid green',
+												// border: '1px solid red',
 											}
 										}
 									>
-										<Link
-											to={path}
-											component={ReactLink}
-											underline='none'
-											sx={{ display: 'flex' }}
+										<ListItemButton
+											divider={true}
+											onClick={handleClose}
+											sx={
+												{
+													// border: '1px solid green',
+												}
+											}
 										>
-											<ListItemIcon
-												sx={{
-													display: 'flex',
-													alignItems: 'center',
-													justifyContent: 'center',
-												}}
+											<Link
+												to={path}
+												component={ReactLink}
+												underline='none'
+												sx={{ display: 'flex' }}
 											>
-												{icon}
-											</ListItemIcon>
-											<ListItemText
-												primary={name}
-												primaryTypographyProps={{
-													fontSize: '22px',
-												}}
-											/>
-										</Link>
-									</ListItemButton>
-								</ListItem>
+												<ListItemIcon
+													sx={{
+														display: 'flex',
+														alignItems: 'center',
+														justifyContent: 'center',
+													}}
+												>
+													{icon}
+												</ListItemIcon>
+												<ListItemText
+													primary={name}
+													primaryTypographyProps={{
+														fontSize: '22px',
+													}}
+												/>
+											</Link>
+										</ListItemButton>
+									</ListItem>
+								</React.Fragment>
 							);
 						})}
 					</List>
+					{/* </Toolbar> */}
 				</Box>
 			</Drawer>
 		</>
