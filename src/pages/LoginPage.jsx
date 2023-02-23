@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link as ReactLink } from 'react-router-dom';
+import { styled } from '@mui/material';
 import {
 	Container,
 	Paper,
@@ -17,6 +18,32 @@ const handleLogin = (email, password) => {
 	console.log(password);
 };
 
+const CustomTextField = styled(TextField)(({ theme }) => ({
+	// do tego napisu nad inputem
+	'& label': {
+		'&.Mui-focused': {
+			color: theme.palette.text.secondary,
+		},
+	},
+
+	// kolor border static
+	'& fieldset': {
+		borderRadius: 0,
+		borderColor: theme.palette.secondary.main,
+	},
+
+	// kolor border do :hover
+	'& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
+		borderColor: theme.palette.secondary.dark,
+	},
+
+	// do bordera na focus
+	'& .Mui-focused .MuiOutlinedInput-notchedOutline': {
+		borderWidth: '1px',
+		borderColor: theme.palette.secondary.dark,
+	},
+}));
+
 const LoginPage = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -29,10 +56,19 @@ const LoginPage = () => {
 				height: '100%',
 				display: 'flex',
 				alignItems: 'center',
+				bgcolor: 'secondary.light',
 			}}
 		>
 			<Container maxWidth='xs'>
-				<Paper elevation={10} sx={{ px: 3, py: 3 }}>
+				<Paper
+					elevation={10}
+					sx={{
+						px: 3,
+						py: 3,
+						borderRadius: 0,
+						bgcolor: 'primary.light',
+					}}
+				>
 					<Box
 						sx={{
 							display: 'flex',
@@ -40,7 +76,12 @@ const LoginPage = () => {
 							alignItems: 'center',
 						}}
 					>
-						<Typography component='h1' variant='h1'>
+						<Typography
+							component='h1'
+							variant='h1'
+							sx={{ userSelect: 'none' }}
+							noWrap
+						>
 							Sign In
 						</Typography>
 						<Box
@@ -49,7 +90,7 @@ const LoginPage = () => {
 								mt: 1,
 							}}
 						>
-							<TextField
+							<CustomTextField
 								required
 								fullWidth
 								margin='normal'
@@ -57,7 +98,7 @@ const LoginPage = () => {
 								type='text'
 								onChange={e => setEmail(e.target.value)}
 							/>
-							<TextField
+							<CustomTextField
 								required
 								fullWidth
 								margin='normal'
@@ -66,21 +107,34 @@ const LoginPage = () => {
 								onChange={e => setPassword(e.target.value)}
 							/>
 							<Button
-								fullWidth
 								variant='contained'
-								sx={{ mt: 3, mb: 2 }}
+								fullWidth
+								sx={{
+									mt: 3,
+									mb: 2,
+									color: 'customButtonAuthTextColors.primary',
+									bgcolor: 'secondary.dark',
+								}}
 								onClick={() => handleLogin(email, password)}
 							>
 								Login
 							</Button>
-							<Grid container>
-								{/* TODO: add functionality to this */}
-								{/* this is link "empty" - work in progress  */}
+							<Grid container direction='column' spacing={'4px'}>
 								<Grid item xs>
-									<Link //
+									<Link
 										component={ReactLink}
 										to='/'
 										variant='h5'
+										underline='hover'
+										color='authLinkColor.main'
+										noWrap
+										sx={{
+											display: 'flex',
+											justifyContent: 'flex-end',
+											'&:hover': {
+												textDecorationColor: 'secondary.light',
+											},
+										}}
 									>
 										Forgot password?
 									</Link>
@@ -90,6 +144,12 @@ const LoginPage = () => {
 										component={ReactLink}
 										to='/register'
 										variant='h5'
+										underline='hover'
+										color='authLinkColor.main'
+										sx={{
+											display: 'flex',
+											justifyContent: 'flex-end',
+										}}
 									>
 										Don't have an account? Register
 									</Link>
