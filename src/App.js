@@ -9,22 +9,23 @@ import CssBaseline from '@mui/material/CssBaseline';
 import HomePage from './pages/HomePage.jsx';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
+import AuthInterface from './components/AuthInterface/AuthInterface.jsx';
 import UserInterface from './components/UserInterface/UserInterface.jsx';
 
 import { ThemeProvider, createTheme } from '@mui/material';
 import { setThemeValues } from './theme/setThemeValues.js';
 
 function App() {
-	const activeTheme = createTheme(setThemeValues('light'));
+	const activeTheme = createTheme(setThemeValues('dark'));
 
 	const routing = createBrowserRouter(
 		createRoutesFromElements(
 			<>
-				<Route element={<Root navbar={false} />}>
+				<Route element={<AuthRoot />}>
 					<Route index path='/login' element={<LoginPage />} />
 					<Route path='/register' element={<RegisterPage />} />
 				</Route>
-				<Route element={<Root navbar={true} />}>
+				<Route element={<Root />}>
 					<Route path='/' element={<HomePage />} />
 				</Route>
 			</>
@@ -50,10 +51,19 @@ function App() {
 	);
 }
 
-const Root = ({ navbar }) => {
+const Root = () => {
 	return (
 		<>
-			{navbar ? <UserInterface /> : null}
+			<UserInterface />
+			<Outlet />
+		</>
+	);
+};
+
+const AuthRoot = () => {
+	return (
+		<>
+			<AuthInterface />
 			<Outlet />
 		</>
 	);

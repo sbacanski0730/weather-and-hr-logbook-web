@@ -78,7 +78,12 @@ const RegisterPage = () => {
 							alignItems: 'center',
 						}}
 					>
-						<Typography component='h1' variant='h1' noWrap>
+						<Typography
+							component='h1'
+							variant='h1'
+							sx={{ userSelect: 'none' }}
+							noWrap
+						>
 							Sign Up
 						</Typography>
 						<Box
@@ -93,7 +98,6 @@ const RegisterPage = () => {
 								margin='normal'
 								label='Email Address'
 								type='text'
-								// focused={true}
 								onChange={e => {
 									setEmail(e.target.value);
 								}}

@@ -1,6 +1,7 @@
 const colorsByMode = mode => {
 	return mode == 'light'
-		? {
+		? // light mode
+		  {
 				primary: {
 					main: '#eaf6ff',
 					light: '#f8fcff',
@@ -10,12 +11,6 @@ const colorsByMode = mode => {
 					main: '#b9e1fe',
 					light: '#daeffe',
 					dark: '#88ccff',
-					contrastText: '#004a82',
-				},
-				success: {
-					main: '#4caf50',
-					light: '#2e7d32',
-					dark: '#1b5e20',
 				},
 				text: {
 					primary: '#000910',
@@ -25,147 +20,41 @@ const colorsByMode = mode => {
 					primary: '#ffffff',
 					secondary: '',
 				},
+				topbarHoverColor: {
+					// main: '#004a82', TODO: choose color for light theme
+				},
 				authLinkColor: {
 					main: '#004a82',
 				},
+				backdropBackgroundColor: 'rgba(0,0,0, 0.13)',
 		  }
 		: {
 				primary: {
-					main: '#42a5f5',
-					light: '#1976d2',
-					dark: '#1565c0',
+					main: '#002039',
+					light: '#002e51',
+					dark: '#001B30',
 				},
 				secondary: {
-					main: '#ba68c8',
-					light: '#9c27b0',
-					dark: '#7b1fa2',
-				},
-				success: {
-					main: '#4caf50',
-					light: '#2e7d32',
-					dark: '#1b5e20',
+					main: '#002e51',
+					light: '#003c6a',
+					dark: '#001b30',
 				},
 				text: {
-					primary: '#0ff',
-					secondary: '#f00',
+					primary: '#f2f9ff',
+					secondary: '#e2f2fe',
 				},
-				customTextColors: {
-					primary: '#ff0000',
+				customButtonAuthTextColors: {
+					primary: '#ffffff',
 					secondary: '',
 				},
+				topbarHoverColor: {
+					main: '#004a82',
+				},
+				authLinkColor: {
+					main: '#004a82',
+				},
+				backdropBackgroundColor: 'rgba(0,0,0, 0.13)',
 		  };
 };
-
-// const colorsByMode = mode => {
-// 	mode == 'light'
-// 		? {
-// 				primary: {
-// 					main: '#42a5f5',
-// 					light: '#1976d2',
-// 					dark: '#1565c0',
-// 				},
-// 				secondary: {
-// 					main: '#ba68c8',
-// 					light: '#9c27b0',
-// 					dark: '#7b1fa2',
-// 				},
-// 				error: {
-// 					main: '#ef5350',
-// 					light: '#d32f2f',
-// 					dark: '#c62828',
-// 				},
-// 				warning: {
-// 					main: '#ff9800',
-// 					light: '#ed6c02',
-// 					dark: '#e65100',
-// 					contrastText: '',
-// 				},
-// 				success: {
-// 					main: '#4caf50',
-// 					light: '#2e7d32',
-// 					dark: '#1b5e20',
-// 				},
-// 				text: {
-// 					primary: '#0f0',
-// 					secondary: '#f00',
-// 				},
-// 				customTextColors: {
-// 					primary: '#ff0000',
-// 					secondary: '',
-// 				},
-// 		  }
-// 		: {
-// 				primary: {
-// 					main: '#42a5f5',
-// 					light: '#1976d2',
-// 					dark: '#1565c0',
-// 				},
-// 				secondary: {
-// 					main: '#ba68c8',
-// 					light: '#9c27b0',
-// 					dark: '#7b1fa2',
-// 				},
-// 				error: {
-// 					main: '#ef5350',
-// 					light: '#d32f2f',
-// 					dark: '#c62828',
-// 				},
-// 				warning: {
-// 					main: '#ff9800',
-// 					light: '#ed6c02',
-// 					dark: '#e65100',
-// 					contrastText: '',
-// 				},
-// 				success: {
-// 					main: '#4caf50',
-// 					light: '#2e7d32',
-// 					dark: '#1b5e20',
-// 				},
-// 				text: {
-// 					// primary: '#ff0000',
-// 				},
-// 				customTextColors: {
-// 					// primary: '#00ffff',
-// 					secondary: '',
-// 				},
-// 		  };
-// };
-// if (mode == 'dark') {
-// 	return {
-// 		primary: {
-// 			main: '#42a5f5',
-// 			light: '#1976d2',
-// 			dark: '#1565c0',
-// 		},
-// 		secondary: {
-// 			main: '#ba68c8',
-// 			light: '#9c27b0',
-// 			dark: '#7b1fa2',
-// 		},
-// 		error: {
-// 			main: '#ef5350',
-// 			light: '#d32f2f',
-// 			dark: '#c62828',
-// 		},
-// 		warning: {
-// 			main: '#ff9800',
-// 			light: '#ed6c02',
-// 			dark: '#e65100',
-// 			contrastText: '',
-// 		},
-// 		success: {
-// 			main: '#4caf50',
-// 			light: '#2e7d32',
-// 			dark: '#1b5e20',
-// 		},
-// 		text: {
-// 			// primary: '#ff0000',
-// 		},
-// 		customTextColors: {
-// 			// primary: '#00ffff',
-// 			secondary: '',
-// 		},
-// 	};
-// }
 
 export default colorsByMode;

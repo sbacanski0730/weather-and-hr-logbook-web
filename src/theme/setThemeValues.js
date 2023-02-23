@@ -1,4 +1,3 @@
-import { createTheme } from '@mui/system';
 import colorsByMode from './colorsByMode.js';
 
 export const setThemeValues = mode => {
@@ -23,10 +22,10 @@ export const setThemeValues = mode => {
 				fontSize: '2rem',
 			},
 			h4: {
-				fontSize: '1rem',
+				fontSize: '1.5rem',
 			},
 			h5: {
-				fontSize: '0.90rem',
+				fontSize: '1rem',
 			},
 			subtitle1: {
 				fontSize: '1rem',
@@ -41,7 +40,7 @@ export const setThemeValues = mode => {
 				fontSize: '1rem',
 			},
 			button: {
-				fontSize: '1.25rem',
+				fontSize: '1.2rem',
 			},
 		},
 	};

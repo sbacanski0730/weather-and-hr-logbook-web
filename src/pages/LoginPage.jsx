@@ -76,7 +76,12 @@ const LoginPage = () => {
 							alignItems: 'center',
 						}}
 					>
-						<Typography component='h1' variant='h1' noWrap>
+						<Typography
+							component='h1'
+							variant='h1'
+							sx={{ userSelect: 'none' }}
+							noWrap
+						>
 							Sign In
 						</Typography>
 						<Box

@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { Link as ReactLink } from 'react-router-dom';
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Toolbar from '@mui/material/Toolbar';
+import Stack from '@mui/material/Stack';
 import Badge from '@mui/material/Badge';
 import AppBar from '@mui/material/AppBar';
-import Drawer from '@mui/material/Drawer';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import { Button } from '@mui/material/';
-import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+
+import CustomTopbarButton from '../styled-components/CustomTopbarButton.jsx';
+import CustomTopbarIconButton from '../styled-components/CustomTopbarIconButton';
+import CustomSidebarListItem from '../styled-components/CustomSidebarListItem';
+import CustomColoredSidebarDrawer from '../styled-components/CustomColoredSidebarDrawer';
 
 import MenuIcon from '@mui/icons-material/Menu';
 import FolderIcon from '@mui/icons-material/Folder';
@@ -30,24 +30,17 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 const UserInterface = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [notification] = useState(3);
-
-	const handleClose = () => {
-		setIsOpen(false);
-	};
-
-	const handleOpen = () => {
-		setIsOpen(true);
-	};
+	const [notification] = useState(0);
 
 	return (
 		<>
 			{/* Topbar */}
 			<AppBar
 				position='fixed'
-				// color='primary'
+				sx={{
+					backgroundColor: 'primary.main',
+				}}
 			>
-				{/* <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}> */}
 				<Box
 					sx={{
 						display: 'flex',
@@ -56,81 +49,78 @@ const UserInterface = () => {
 						my: '4px',
 					}}
 				>
-					<Box sx={{ display: 'flex', flexDirection: 'row' }}>
-						<IconButton
+					<Box
+						sx={{
+							display: 'flex',
+							alignItems: 'center',
+						}}
+					>
+						<CustomTopbarIconButton
 							size='24px'
-							sx={{ color: 'white', mr: 3 }}
-							onClick={handleOpen}
+							sx={{
+								mr: 3,
+							}}
+							onClick={() => {
+								setIsOpen(true);
+							}}
 						>
 							<MenuIcon />
-						</IconButton>
-						<Typography variant='h3' color='textPrimary'>
+						</CustomTopbarIconButton>
+						<Typography
+							variant='h4'
+							color='text.primary'
+							sx={{ userSelect: 'none' }}
+						>
 							WH-Logbook
 						</Typography>
 					</Box>
-					<Box sx={{ display: 'flex', flexDirection: 'row' }}>
-						<IconButton
-							sx={{
-								color: 'white',
-								'&:hover': {
-									backgroundColor: 'rgba(0, 0, 0, 0.4);',
-								},
-							}}
-						>
+					<Stack direction='row' spacing={1}>
+						<CustomTopbarIconButton>
 							<DarkModeSharpIcon />
-						</IconButton>
-						<IconButton
-							sx={{
-								color: 'white',
-								'&:hover': {
-									backgroundColor: 'rgba(0, 0, 0, 0.4);',
-								},
-							}}
-						>
+						</CustomTopbarIconButton>
+						<CustomTopbarIconButton>
 							{notification > 0 ? (
-								<Badge badgeContent={notification} color='secondary'>
+								<Badge max={10} badgeContent={notification} color='info'>
 									<NotificationsActiveIcon />
 								</Badge>
 							) : (
 								<NotificationsIcon />
 							)}
-						</IconButton>
+						</CustomTopbarIconButton>
 
-						<Button
+						<CustomTopbarButton
 							variant='outlined'
 							sx={{
-								color: 'white',
 								display: 'flex',
 								gap: '10px',
 								borderRadius: '40px',
-								// border: '1px solid white',
-								'&:hover': {
-									backgroundColor: 'rgba(0, 0, 0, 0.4);',
-								},
 							}}
 						>
 							<LogoutIcon />
-							<Typography variant='h4'>Logout</Typography>
-						</Button>
-					</Box>
+							<Typography>Logout</Typography>
+						</CustomTopbarButton>
+					</Stack>
 				</Box>
 			</AppBar>
 
 			{/* Sidebar */}
-			<Drawer
+			<CustomColoredSidebarDrawer
 				anchor='left'
 				open={isOpen}
 				onClose={() => {
 					setIsOpen(false);
 				}}
+				PaperProps={{
+					elevation: 12,
+				}}
+				SlideProps={{
+					sx: {
+						backgroundColor: 'primary.main',
+					},
+				}}
 			>
 				<Box sx={{ width: '240px' }}>
-					<List
-						sx={{
-							// border: 1,
-							mt: 5,
-						}}
-					>
+					<List>
 						{[
 							{
 								name: 'Reports',
@@ -160,22 +150,15 @@ const UserInterface = () => {
 						].map(({ name, icon, path }, index) => {
 							return (
 								<React.Fragment key={index}>
-									<ListItem
+									<CustomSidebarListItem
+										lassName='hereIAm'
 										disablePadding
-										sx={
-											{
-												// border: '1px solid red',
-											}
-										}
 									>
 										<ListItemButton
 											divider={true}
-											onClick={handleClose}
-											sx={
-												{
-													// border: '1px solid green',
-												}
-											}
+											onClick={() => {
+												setIsOpen(false);
+											}}
 										>
 											<Link
 												to={path}
@@ -200,14 +183,13 @@ const UserInterface = () => {
 												/>
 											</Link>
 										</ListItemButton>
-									</ListItem>
+									</CustomSidebarListItem>
 								</React.Fragment>
 							);
 						})}
 					</List>
-					{/* </Toolbar> */}
 				</Box>
-			</Drawer>
+			</CustomColoredSidebarDrawer>
 		</>
 	);
 };
