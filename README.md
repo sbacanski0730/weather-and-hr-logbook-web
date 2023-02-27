@@ -9,7 +9,7 @@
 Check app website: [not on production!]
 
 ## 📈 Progress
-At the moment, the project is in the initial stage of development. Login and registration pages as well as common components - topbar and sidebar were created.
+At the moment, the project is in the initial stage of development. Login and registration page as well as common components - topbar and sidebar were created. The next step is to connect already existing authentication pages with REST API. In the following days, it is planned to create the design of the next pages of the project in two theme versions. Once they are created, they will appear in the README document.
 
 ## 🔭 Project Preview
 
@@ -28,7 +28,7 @@ Topbar Component - dark theme  |  Sidebar Component - dark theme
 ### LoginPage - dark theme
 ![LoginPage - dark theme](https://user-images.githubusercontent.com/72625642/221439253-ac1f32d1-d46c-41f6-80a2-18f20ac3aaba.png)
 
-### RegisterPage - dark theme
+### RegisterPage - light theme
 ![RegisterPage - dark theme](https://user-images.githubusercontent.com/72625642/221604479-6e1ed964-59ba-4132-b19a-488630e1cf7d.png)
 
 ### RegisterPage - dark theme
@@ -70,23 +70,40 @@ Backend is simple REST API which act as an intermediary between frontend and dat
 
 ## ✏️ Website Design
 
+> *Website design made by Figma.*
+
 ### Colors Palette
-After a long time of searching for the right palette of colors referring to the colors of the project's theme, I chose two main colors, which in their character referred to the colors of the sea. Like now this was the hardest part of designing the website. Those two colors have a big influence for the future project design. The method of selecting colors was based on the selection of the first two colors: primary and secondary to which I later matched their lighter and darker versions.
+After a long time of searching for the right palette of colors referring to the colors of the project's theme. I chose for two main colors for two theme modes, which in their character referred to the colors of the sea. Like now this was the hardest part of designing the website. Those two colors have a big influence for the future project design. The method of selecting colors was based on the selection of the first two colors: primary and secondary to which I later matched their lighter and darker versions.
 
-Dark Theme Colors | Light Theme Colors
-:-------------------------:|:-------------------------:
-<img src='https://user-images.githubusercontent.com/72625642/221609248-c0aea215-7588-426c-9f50-a1cdbad699d1.png' width="200"/>
+| Light Theme Colors | Dark Theme Colors |
+| ------------------ | ----------------- | 
+| <img src='https://user-images.githubusercontent.com/72625642/221609248-c0aea215-7588-426c-9f50-a1cdbad699d1.png' alt='Light Theme Colors' width='500'/> | <img src='https://user-images.githubusercontent.com/72625642/221609015-365e42f6-7417-4e70-b634-fcab57128c6a.png' alt='Dark Theme Colors' width='500'/> | 
 
-<!--![image](https://user-images.githubusercontent.com/72625642/221609248-c0aea215-7588-426c-9f50-a1cdbad699d1.png) | ![image](https://user-images.githubusercontent.com/72625642/221609015-365e42f6-7417-4e70-b634-fcab57128c6a.png) -->
+### Commom Components
 
-| Light Theme Colors | Dark Theme Colors | 
-| -------- | ---------- | 
-| <img src='![image](https://user-images.githubusercontent.com/72625642/221609248-c0aea215-7588-426c-9f50-a1cdbad699d1.png)' alt='Dark Theme Colors' width='200'/> | <img src='![image](https://user-images.githubusercontent.com/72625642/221609248-c0aea215-7588-426c-9f50-a1cdbad699d1.png)' alt='Dark Theme Colors' width='200'/> | 
+| Light Theme Topbar Component | Dark Theme Topbar Component |
+| ------------------ | ----------------- | 
+|![Light Theme Topbar Component](https://user-images.githubusercontent.com/72625642/221673384-7a3abe81-b9eb-440f-80d3-1f732cedd8db.png) |![Dark Theme Topbar Component](https://user-images.githubusercontent.com/72625642/221673501-f14681bc-3025-49fa-b9ab-0f6f3151c617.png) |
 
+| Light Theme Sidebar Component | Dark Theme Sidebar Component |
+| ------------------ | ----------------- | 
+|![Light Theme Sidebar Component](https://user-images.githubusercontent.com/72625642/221673654-db2776d0-07b1-4d05-b8f8-0325c83df4bd.png) |![Dark Theme Sidebar Component](https://user-images.githubusercontent.com/72625642/221673727-c45f27ee-8419-4942-9a18-7497345476c4.png) |
+
+### Authentication Pages
+
+| Light Theme LoginPage | Dark Theme LoginPage |
+|-----------------------|---------------------|
+|![image](https://user-images.githubusercontent.com/72625642/221671976-60573aa7-8f00-4aa6-9fca-4417129a170e.png)|![image](https://user-images.githubusercontent.com/72625642/221672155-3b8a41d6-b30b-4f74-8186-d39ecc1b0f7d.png)|
+
+| Light Theme RegisterPage | Dark Theme RegisterPage |
+|-----------------------|---------------------|
+| ![Light Theme LoginPage](https://user-images.githubusercontent.com/72625642/221653879-2130cc8d-ec72-42d4-95d2-4d15acf56225.png) | ![Dark Theme LoginPage](https://user-images.githubusercontent.com/72625642/221670038-45a89d26-5d79-4f5d-ab4d-acfe769ab09c.png) |
 
 ## ✍️ Installation Steps
 
-> To run this project you need to have **Node.js** installed
+>**Like now this instruction is in beta version - the proper instruction will be created at a later stage of the project. **
+
+> *To run this project you need to have **Node.js** installed.*
 
 1. Clone the repository
 
