@@ -4,12 +4,33 @@
 
 <p style='text-align: center; font-size: 22px;text-decoration: underline;color:#bb2102 '>Alert! Project still in development! Not all features are introduced.</p>
 
+
 # 💻 Demo
 
 Check app website: [not on production!]
 
 ## 📈 Progress
 At the moment, the project is in the initial stage of development. Login and registration page as well as common components - topbar and sidebar were created. The next step is to connect already existing authentication pages with REST API. In the following days, it is planned to create the design of the next pages of the project in two theme versions. Once they are created, they will appear in the README document.
+
+
+# 📽️ About the project
+
+
+## 🪕 Introduction
+
+The project was created for the needs of engineering work. The idea for this project was created in hurry and in a sudden rush of ill-conceived ideas. However, I quickly understood that despite the unpopular topic, the project uses many new solutions that are used in many other projects. I treat this project as a good self-development oportunity.
+
+## 🦐 Features
+
+- [ ] authentication (classic: email/password and by Google and Facebook)
+- [ ] adding new reports containing: report content, date, weather data, etc.
+- [ ] editing/deleting existing reports
+- [ ] adding employees to account
+- [ ] assigning employees to reports
+- [ ] preview of reports in list and calendar view
+- [ ] setting up notifications for upcoming report deadlines
+- [ ] light/dark website theme
+
 
 ## 🔭 Project Preview
 
@@ -35,30 +56,15 @@ Topbar Component - dark theme  |  Sidebar Component - dark theme
 ![RegisterPage - dark theme](https://user-images.githubusercontent.com/72625642/221439280-6c16c134-c89b-4df1-9fc5-169d933e0125.png)
 
 
-# 📽️ About the project
-
-## 🪕 Introduction
-
-The project was created for the needs of engineering work. The idea for this project was created in hurry and in a sudden rush of ill-conceived ideas. However, 
-
 ## ☔ Project API on GitHub
 
 [weather-and-hr-logbook-api](https://github.com/sbacanski0730/weather-and-hr-logbook-api)
 
-## 🦐 Features
-
-- [ ] authentication (classic: email/password and by Google and Facebook)
-- [ ] adding new reports containing: report content, date, weather data, etc.
-- [ ] editing/deleting existing reports
-- [ ] adding employees to account
-- [ ] assigning employees to reports
-- [ ] preview of reports in list and calendar view
-- [ ] setting up notifications for upcoming report deadlines
-- [ ] light/dark website theme
 
 ## 🚀 Build with
 
 [![React](https://skillicons.dev/icons?i=react&theme=light)](https://pl.reactjs.org/) [![Material-UI](https://skillicons.dev/icons?i=materialui&theme=light)](https://mui.com/)
+
 
 ## 🏚️ Logical Architecture
 
@@ -98,6 +104,7 @@ After a long time of searching for the right palette of colors referring to the 
 | Light Theme RegisterPage | Dark Theme RegisterPage |
 |-----------------------|---------------------|
 | ![Light Theme LoginPage](https://user-images.githubusercontent.com/72625642/221653879-2130cc8d-ec72-42d4-95d2-4d15acf56225.png) | ![Dark Theme LoginPage](https://user-images.githubusercontent.com/72625642/221670038-45a89d26-5d79-4f5d-ab4d-acfe769ab09c.png) |
+
 
 ## ✍️ Installation Steps
 
