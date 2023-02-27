@@ -81,7 +81,7 @@ Dark Theme Colors | Light Theme Colors
 
 | Light Theme Colors | Dark Theme Colors | 
 | -------- | ---------- | 
-| [image](https://user-images.githubusercontent.com/72625642/221609248-c0aea215-7588-426c-9f50-a1cdbad699d1.png) | ![image](https://user-images.githubusercontent.com/72625642/221609015-365e42f6-7417-4e70-b634-fcab57128c6a.png) | 
+| <img src='![image](https://user-images.githubusercontent.com/72625642/221609248-c0aea215-7588-426c-9f50-a1cdbad699d1.png)' alt='Dark Theme Colors' width='200'/> | <img src='![image](https://user-images.githubusercontent.com/72625642/221609248-c0aea215-7588-426c-9f50-a1cdbad699d1.png)' alt='Dark Theme Colors' width='200'/> | 
 
 
 ## ✍️ Installation Steps
