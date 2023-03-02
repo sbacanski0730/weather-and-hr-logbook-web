@@ -1,6 +1,7 @@
 import colorsByMode from './colorsByMode.js';
+import { createTheme } from '@mui/material';
 
-export const setThemeValues = mode => {
+const setThemeValues = mode => {
 	const colors = colorsByMode(mode);
 
 	return {
@@ -45,3 +46,9 @@ export const setThemeValues = mode => {
 		},
 	};
 };
+
+const createProjectTheme = mode => {
+	return createTheme(setThemeValues(mode));
+};
+
+export default createProjectTheme;

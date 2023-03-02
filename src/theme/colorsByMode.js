@@ -17,11 +17,11 @@ const colorsByMode = mode => {
 					secondary: '#001b30',
 				},
 				customButtonAuthTextColors: {
-					primary: '#ffffff',
+					primary: '#fffafa',
 					secondary: '',
 				},
 				topbarHoverColor: {
-					// main: '#004a82', TODO: choose color for light theme
+					main: 'rgba(177,221,254,0.36)',
 				},
 				authLinkColor: {
 					main: '#004a82',
@@ -44,14 +44,14 @@ const colorsByMode = mode => {
 					secondary: '#e2f2fe',
 				},
 				customButtonAuthTextColors: {
-					primary: '#ffffff',
+					primary: '#fffafa',
 					secondary: '',
 				},
 				topbarHoverColor: {
-					main: '#004a82',
+					main: 'rgba(0,83,146,0.36)',
 				},
 				authLinkColor: {
-					main: '#004a82',
+					main: '#daeffe',
 				},
 				backdropBackgroundColor: 'rgba(0,0,0, 0.13)',
 		  };

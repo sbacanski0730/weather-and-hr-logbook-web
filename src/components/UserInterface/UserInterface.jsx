@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link as ReactLink } from 'react-router-dom';
+import { ThemeContext } from '../../App';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Badge from '@mui/material/Badge';
@@ -24,6 +25,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 
 import DarkModeSharpIcon from '@mui/icons-material/DarkModeSharp';
+import LightModeIcon from '@mui/icons-material/LightMode';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -31,6 +33,8 @@ import LogoutIcon from '@mui/icons-material/Logout';
 const UserInterface = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [notification] = useState(0);
+
+	const { themeMode, toggleTheme } = useContext(ThemeContext);
 
 	return (
 		<>
@@ -75,8 +79,12 @@ const UserInterface = () => {
 						</Typography>
 					</Box>
 					<Stack direction='row' spacing={1}>
-						<CustomTopbarIconButton>
-							<DarkModeSharpIcon />
+						<CustomTopbarIconButton onClick={toggleTheme}>
+							{themeMode === 'dark' ? (
+								<LightModeIcon />
+							) : (
+								<DarkModeSharpIcon />
+							)}
 						</CustomTopbarIconButton>
 						<CustomTopbarIconButton>
 							{notification > 0 ? (
