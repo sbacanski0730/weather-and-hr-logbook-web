@@ -38,7 +38,7 @@ const AuthInterface = () => {
 						py: '1px',
 					}}
 				>
-					{themeMode === 'dark' ? <DarkModeSharpIcon /> : <LightModeIcon />}
+					{themeMode === 'dark' ? <LightModeIcon /> : <DarkModeSharpIcon />}
 				</CustomTopbarIconButton>
 				<CustomTopbarButton sx={{ my: '1px', mx: '2px' }}>
 					<Link

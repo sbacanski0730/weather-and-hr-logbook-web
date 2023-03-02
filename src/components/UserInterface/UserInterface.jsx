@@ -81,9 +81,9 @@ const UserInterface = () => {
 					<Stack direction='row' spacing={1}>
 						<CustomTopbarIconButton onClick={toggleTheme}>
 							{themeMode === 'dark' ? (
-								<DarkModeSharpIcon />
-							) : (
 								<LightModeIcon />
+							) : (
+								<DarkModeSharpIcon />
 							)}
 						</CustomTopbarIconButton>
 						<CustomTopbarIconButton>
