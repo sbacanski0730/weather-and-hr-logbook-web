@@ -11,11 +11,10 @@ const CustomTopbarButton = styled(Button)(({ theme }) => ({
 		},
 		'&.MuiButtonBase-root.MuiButton-root': {
 			color: theme.palette.text.primary,
-			// backgroundColor: 'red',
 			border: 'none',
 		},
 		'&:hover.MuiButtonBase-root.MuiButton-root ': {
-			backgroundColor: `${theme.palette.topbarHoverColor.main}ee`,
+			backgroundColor: `${theme.palette.topbarHoverColor.main}`,
 		},
 	},
 }));

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ThemeContext } from '../App';
 import { Link as ReactLink } from 'react-router-dom';
 import { styled } from '@mui/material';
 import {
@@ -47,6 +48,8 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
 const LoginPage = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+
+	const { themeMode, toggleTheme } = useContext(ThemeContext);
 
 	return (
 		<Container
@@ -114,6 +117,8 @@ const LoginPage = () => {
 									mb: 2,
 									color: 'customButtonAuthTextColors.primary',
 									bgcolor: 'secondary.dark',
+									boxShadow: 'none',
+									'&:hover': { boxShadow: 'none' },
 								}}
 								onClick={() => handleLogin(email, password)}
 							>

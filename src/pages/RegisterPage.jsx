@@ -130,6 +130,8 @@ const RegisterPage = () => {
 									mb: 2,
 									color: 'customButtonAuthTextColors.primary',
 									bgcolor: 'secondary.dark',
+									boxShadow: 'none',
+									'&:hover': { boxShadow: 'none' },
 								}}
 								onClick={() =>
 									handleRegister(email, password, repeatPassword)

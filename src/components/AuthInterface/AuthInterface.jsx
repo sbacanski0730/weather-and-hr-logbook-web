@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link as ReactLink } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import Link from '@mui/material/Link';
 
+import { ThemeContext } from '../../App';
+
 import DarkModeSharpIcon from '@mui/icons-material/DarkModeSharp';
+import LightModeIcon from '@mui/icons-material/LightMode';
 
 import CustomTopbarIconButton from '../styled-components/CustomTopbarIconButton';
 import CustomTopbarButton from '../styled-components/CustomTopbarButton';
 
 const AuthInterface = () => {
+	const { themeMode, toggleTheme } = useContext(ThemeContext);
+
 	return (
 		<AppBar
 			position='fixed'
@@ -26,13 +31,14 @@ const AuthInterface = () => {
 		>
 			<Stack direction='row' spacing={1}>
 				<CustomTopbarIconButton
+					onClick={toggleTheme}
 					size='small'
 					sx={{
 						px: '1px',
 						py: '1px',
 					}}
 				>
-					<DarkModeSharpIcon />
+					{themeMode === 'dark' ? <DarkModeSharpIcon /> : <LightModeIcon />}
 				</CustomTopbarIconButton>
 				<CustomTopbarButton sx={{ my: '1px', mx: '2px' }}>
 					<Link

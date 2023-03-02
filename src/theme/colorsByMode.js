@@ -21,7 +21,7 @@ const colorsByMode = mode => {
 					secondary: '',
 				},
 				topbarHoverColor: {
-					// main: '#004a82', TODO: choose color for light theme
+					main: 'rgba(177,221,254,0.36)',
 				},
 				authLinkColor: {
 					main: '#004a82',
@@ -48,10 +48,10 @@ const colorsByMode = mode => {
 					secondary: '',
 				},
 				topbarHoverColor: {
-					main: '#004a82',
+					main: 'rgba(0,83,146,0.36)',
 				},
 				authLinkColor: {
-					main: '#004a82',
+					// main: '#004a82', TODO: choose color for dark theme,
 				},
 				backdropBackgroundColor: 'rgba(0,0,0, 0.13)',
 		  };
