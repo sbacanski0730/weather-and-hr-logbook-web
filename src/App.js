@@ -12,6 +12,8 @@ import LoginPage from './pages/LoginPage';
 import Root from './layouts/Root';
 import AuthRoot from './layouts/AuthRoot';
 
+import { APP_ROUTES } from './utils/constants.js';
+
 import { ThemeProvider } from '@mui/material';
 import createProjectTheme from './theme/createProjectTheme.js';
 
@@ -19,11 +21,11 @@ const routing = createBrowserRouter(
 	createRoutesFromElements(
 		<>
 			<Route element={<AuthRoot />}>
-				<Route index path='/login' element={<LoginPage />} />
-				<Route path='/register' element={<RegisterPage />} />
+				<Route index path={APP_ROUTES.LOGIN} element={<LoginPage />} />
+				<Route path={APP_ROUTES.REGISTER} element={<RegisterPage />} />
 			</Route>
 			<Route element={<Root />}>
-				<Route path='/' element={<HomePage />} />
+				<Route path={APP_ROUTES.HOME} element={<HomePage />} />
 			</Route>
 		</>
 	)
