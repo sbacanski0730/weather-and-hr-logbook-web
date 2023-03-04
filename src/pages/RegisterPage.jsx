@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link as ReactLink } from 'react-router-dom';
 import { styled } from '@mui/material';
 import {
@@ -11,13 +12,8 @@ import {
 	Typography,
 	Link,
 } from '@mui/material';
-
-// TODO: move this function to auth context
-const handleRegister = (email, password, repeatPassword) => {
-	console.log(email);
-	console.log(password);
-	console.log(repeatPassword);
-};
+import { APP_ROUTES } from '../utils/constants';
+import { API_ROUTES } from '../utils/constants';
 
 const CustomTextField = styled(TextField)(({ theme }) => ({
 	// do tego napisu nad inputem
@@ -46,9 +42,38 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
 }));
 
 const RegisterPage = () => {
+	const navigate = useNavigate();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [repeatPassword, setRepeatPassword] = useState('');
+
+	useEffect(() => {
+		if (localStorage.getItem('token')) {
+			navigate(APP_ROUTES.HOME);
+		}
+	}, []);
+
+	// TODO: move this function to auth context
+	const handleRegister = async () => {
+		console.log(email);
+		console.log(password);
+		console.log(API_ROUTES.REGISTER);
+
+		const response = await fetch(API_ROUTES.REGISTER, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				email: email,
+				password: password,
+			}),
+		});
+
+		const data = await response.json();
+
+		console.log(data);
+	};
 
 	return (
 		<Container
@@ -133,9 +158,7 @@ const RegisterPage = () => {
 									boxShadow: 'none',
 									'&:hover': { boxShadow: 'none' },
 								}}
-								onClick={() =>
-									handleRegister(email, password, repeatPassword)
-								}
+								onClick={() => handleRegister()}
 							>
 								Register
 							</Button>

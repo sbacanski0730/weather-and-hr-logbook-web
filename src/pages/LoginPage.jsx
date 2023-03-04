@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { ThemeContext } from '../App';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link as ReactLink } from 'react-router-dom';
 import { styled } from '@mui/material';
 import {
@@ -12,6 +12,7 @@ import {
 	Grid,
 	Link,
 } from '@mui/material';
+import { APP_ROUTES } from '../utils/constants';
 
 // TODO: move this function to auth context
 const handleLogin = (email, password) => {
@@ -48,8 +49,7 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
 const LoginPage = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-
-	const { themeMode, toggleTheme } = useContext(ThemeContext);
+	const navigate = useNavigate();
 
 	return (
 		<Container
