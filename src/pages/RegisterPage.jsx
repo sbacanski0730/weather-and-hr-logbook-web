@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import { APP_ROUTES } from '../utils/constants';
 import { API_ROUTES } from '../utils/constants';
+import { authenticateUserToken, isValidateRegister } from '../utils/authFunction';
 
 const CustomTextField = styled(TextField)(({ theme }) => ({
 	// do tego napisu nad inputem
@@ -43,36 +44,56 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
 
 const RegisterPage = () => {
 	const navigate = useNavigate();
+	const [infoContent, setInfoContent] = useState('');
+	const [infoColor, setInfoColor] = useState('#8a0508');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [repeatPassword, setRepeatPassword] = useState('');
+	const [repeatedPassword, setRepeatedPassword] = useState('');
 
 	useEffect(() => {
-		if (localStorage.getItem('token')) {
-			navigate(APP_ROUTES.HOME);
-		}
+		const authenticateForLoginPage = async () => {
+			const { verify } = await authenticateUserToken();
+
+			if (verify) {
+				navigate('/');
+			} else {
+				localStorage.removeItem('token');
+			}
+		};
+		authenticateForLoginPage();
 	}, []);
 
 	// TODO: move this function to auth context
 	const handleRegister = async () => {
-		console.log(email);
-		console.log(password);
-		console.log(API_ROUTES.REGISTER);
+		try {
+			if (isValidateRegister(email, password, repeatedPassword)) {
+				const { status, message } = await fetch(API_ROUTES.REGISTER, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						email: email,
+						password: password,
+					}),
+				}).then(res => res.json());
 
-		const response = await fetch(API_ROUTES.REGISTER, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				email: email,
-				password: password,
-			}),
-		});
+				status ? setInfoColor('#32c809') : setInfoColor('#d20404');
+				setInfoContent(message);
 
-		const data = await response.json();
+				setPassword('');
+				setRepeatedPassword('');
 
-		console.log(data);
+				setTimeout(() => {
+					setInfoContent('');
+				}, 5000);
+			}
+		} catch (err) {
+			setInfoContent(err);
+			setTimeout(() => {
+				setInfoContent('');
+			}, 5000);
+		}
 	};
 
 	return (
@@ -144,9 +165,22 @@ const RegisterPage = () => {
 								label='Repeat Password'
 								type='password'
 								onChange={e => {
-									setRepeatPassword(e.target.value);
+									setRepeatedPassword(e.target.value);
 								}}
 							/>
+							{infoContent && (
+								<Typography
+									variant='subtitle2'
+									sx={{
+										m: 0,
+										px: 1,
+										color: `${infoColor}`,
+										boxShadow: 'none',
+									}}
+								>
+									{infoContent}
+								</Typography>
+							)}
 							<Button
 								variant='contained'
 								fullWidth

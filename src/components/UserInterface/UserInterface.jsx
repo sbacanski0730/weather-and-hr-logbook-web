@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { Link as ReactLink } from 'react-router-dom';
+import { Link as ReactLink, useNavigate } from 'react-router-dom';
+import { APP_ROUTES } from '../../utils/constants';
 import { ThemeContext } from '../../App';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
@@ -33,8 +34,14 @@ import LogoutIcon from '@mui/icons-material/Logout';
 const UserInterface = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [notification] = useState(0);
+	const navigate = useNavigate();
 
 	const { themeMode, toggleTheme } = useContext(ThemeContext);
+
+	const logout = () => {
+		localStorage.removeItem('token');
+		navigate(APP_ROUTES.LOGIN);
+	};
 
 	return (
 		<>
@@ -103,6 +110,7 @@ const UserInterface = () => {
 								gap: '10px',
 								borderRadius: '40px',
 							}}
+							onClick={logout}
 						>
 							<LogoutIcon />
 							<Typography>Logout</Typography>

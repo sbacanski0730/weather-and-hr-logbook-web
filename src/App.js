@@ -38,7 +38,7 @@ const getTheme = () => {
 };
 
 function App() {
-	const [themeMode, setThemeMode] = useState(getTheme());
+	const [themeMode, setThemeMode] = useState(getTheme() || 'light');
 
 	const toggleTheme = () => {
 		if (themeMode === 'light') setThemeMode('dark');
