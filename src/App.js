@@ -27,7 +27,7 @@ const routing = createBrowserRouter(
 			</Route>
 			<Route element={<Root />}>
 				<Route path={APP_ROUTES.HOME} element={<HomePage />} />
-				<Route path={APP_ROUTES.ADD_REPORTS} element={<AddReportPage />} />
+				<Route path={APP_ROUTES.ADD_REPORT} element={<AddReportPage />} />
 			</Route>
 		</>
 	)
@@ -40,7 +40,7 @@ const getTheme = () => {
 };
 
 function App() {
-	const [themeMode, setThemeMode] = useState(getTheme());
+	const [themeMode, setThemeMode] = useState(getTheme() || 'light');
 
 	const toggleTheme = () => {
 		if (themeMode === 'light') setThemeMode('dark');
