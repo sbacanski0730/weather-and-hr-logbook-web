@@ -9,6 +9,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import HomePage from './pages/HomePage.jsx';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
+import AddReportPage from './pages/AddReportPage.jsx';
 import Root from './layouts/Root';
 import AuthRoot from './layouts/AuthRoot';
 
@@ -26,6 +27,7 @@ const routing = createBrowserRouter(
 			</Route>
 			<Route element={<Root />}>
 				<Route path={APP_ROUTES.HOME} element={<HomePage />} />
+				<Route path={APP_ROUTES.ADD_REPORT} element={<AddReportPage />} />
 			</Route>
 		</>
 	)
@@ -38,7 +40,7 @@ const getTheme = () => {
 };
 
 function App() {
-	const [themeMode, setThemeMode] = useState(getTheme());
+	const [themeMode, setThemeMode] = useState(getTheme() || 'light');
 
 	const toggleTheme = () => {
 		if (themeMode === 'light') setThemeMode('dark');
