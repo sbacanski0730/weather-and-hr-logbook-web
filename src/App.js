@@ -17,6 +17,7 @@ import { APP_ROUTES } from './utils/constants.js';
 
 import { ThemeProvider } from '@mui/material';
 import createProjectTheme from './theme/createProjectTheme.js';
+import InfoPage from './pages/InfoPage.jsx';
 
 const routing = createBrowserRouter(
 	createRoutesFromElements(
@@ -24,6 +25,7 @@ const routing = createBrowserRouter(
 			<Route element={<AuthRoot />}>
 				<Route index path={APP_ROUTES.LOGIN} element={<LoginPage />} />
 				<Route path={APP_ROUTES.REGISTER} element={<RegisterPage />} />
+				<Route path={APP_ROUTES.INFO} element={<InfoPage />} />
 			</Route>
 			<Route element={<Root />}>
 				<Route path={APP_ROUTES.HOME} element={<HomePage />} />
