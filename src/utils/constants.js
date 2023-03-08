@@ -9,7 +9,8 @@ export const APP_ROUTES = {
 	HOME: '/',
 	LOGIN: '/login',
 	REGISTER: '/register',
-	INFO: '/project-info',
+	INFO: '/info',
+	PROJECT_INFO: '/project-info',
 	REPORTS: '/reports',
 	ADD_REPORT: '/add-report',
 };

@@ -29,6 +29,7 @@ const routing = createBrowserRouter(
 			</Route>
 			<Route element={<Root />}>
 				<Route path={APP_ROUTES.HOME} element={<HomePage />} />
+				<Route path={APP_ROUTES.PROJECT_INFO} element={<InfoPage />} />
 				<Route path={APP_ROUTES.ADD_REPORT} element={<AddReportPage />} />
 			</Route>
 		</>
@@ -58,16 +59,7 @@ function App() {
 			<ThemeContext.Provider value={{ themeMode, toggleTheme }}>
 				<ThemeProvider theme={createProjectTheme(themeMode)}>
 					<CssBaseline />
-					{/* <Container
-					maxWidth={false}
-					sx={{
-						width: '100vw',
-						height: '100vh',
-					}}
-				> */}
 					<RouterProvider router={routing} />
-
-					{/* </Container> */}
 				</ThemeProvider>
 			</ThemeContext.Provider>
 		</>

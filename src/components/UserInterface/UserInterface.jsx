@@ -23,6 +23,7 @@ import AddIcon from '@mui/icons-material/Add';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 import DarkModeSharpIcon from '@mui/icons-material/DarkModeSharp';
 import LightModeIcon from '@mui/icons-material/LightMode';
@@ -154,6 +155,11 @@ const UserInterface = () => {
 								name: 'Settings',
 								icon: <SettingsIcon sx={{ fontSize: '30px' }} />,
 								path: '/settings',
+							},
+							{
+								name: 'Project info',
+								icon: <QuestionMarkIcon sx={{ fontSize: '30px' }} />,
+								path: '/project-info',
 							},
 						].map(({ name, icon, path }, index) => {
 							return (
