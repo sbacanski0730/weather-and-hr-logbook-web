@@ -51,7 +51,7 @@ const colorsByMode = mode => {
 					main: 'rgba(0,83,146,0.36)',
 				},
 				authLinkColor: {
-					main: '#daeffe',
+					main: '#1e9edd',
 				},
 				backdropBackgroundColor: 'rgba(0,0,0, 0.13)',
 		  };

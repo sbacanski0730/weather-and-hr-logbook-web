@@ -17,6 +17,7 @@ import { APP_ROUTES } from './utils/constants.js';
 
 import { ThemeProvider } from '@mui/material';
 import createProjectTheme from './theme/createProjectTheme.js';
+import InfoPage from './pages/InfoPage.jsx';
 
 const routing = createBrowserRouter(
 	createRoutesFromElements(
@@ -24,9 +25,11 @@ const routing = createBrowserRouter(
 			<Route element={<AuthRoot />}>
 				<Route index path={APP_ROUTES.LOGIN} element={<LoginPage />} />
 				<Route path={APP_ROUTES.REGISTER} element={<RegisterPage />} />
+				<Route path={APP_ROUTES.INFO} element={<InfoPage />} />
 			</Route>
 			<Route element={<Root />}>
 				<Route path={APP_ROUTES.HOME} element={<HomePage />} />
+				<Route path={APP_ROUTES.PROJECT_INFO} element={<InfoPage />} />
 				<Route path={APP_ROUTES.ADD_REPORT} element={<AddReportPage />} />
 			</Route>
 		</>
@@ -56,16 +59,7 @@ function App() {
 			<ThemeContext.Provider value={{ themeMode, toggleTheme }}>
 				<ThemeProvider theme={createProjectTheme(themeMode)}>
 					<CssBaseline />
-					{/* <Container
-					maxWidth={false}
-					sx={{
-						width: '100vw',
-						height: '100vh',
-					}}
-				> */}
 					<RouterProvider router={routing} />
-
-					{/* </Container> */}
 				</ThemeProvider>
 			</ThemeContext.Provider>
 		</>

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link as ReactLink } from 'react-router-dom';
+import { Link as ReactLink, useLocation } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
@@ -13,8 +13,11 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import CustomTopbarIconButton from '../styled-components/CustomTopbarIconButton';
 import CustomTopbarButton from '../styled-components/CustomTopbarButton';
 
+import { APP_ROUTES } from '../../utils/constants';
+
 const AuthInterface = () => {
 	const { themeMode, toggleTheme } = useContext(ThemeContext);
+	const { pathname } = useLocation();
 
 	return (
 		<AppBar
@@ -41,14 +44,25 @@ const AuthInterface = () => {
 					{themeMode === 'dark' ? <LightModeIcon /> : <DarkModeSharpIcon />}
 				</CustomTopbarIconButton>
 				<CustomTopbarButton sx={{ my: '1px', mx: '2px' }}>
-					<Link
-						to='project-info'
-						component={ReactLink}
-						sx={{ color: 'inherited' }}
-						underline='none'
-					>
-						<Typography variant='h5'>INFO</Typography>
-					</Link>
+					{pathname.includes('info') ? (
+						<Link
+							to={APP_ROUTES.LOGIN}
+							component={ReactLink}
+							sx={{ color: 'inherited' }}
+							underline='none'
+						>
+							<Typography variant='h5'>LOGIN</Typography>
+						</Link>
+					) : (
+						<Link
+							to={APP_ROUTES.INFO}
+							component={ReactLink}
+							sx={{ color: 'inherited' }}
+							underline='none'
+						>
+							<Typography variant='h5'>INFO</Typography>
+						</Link>
+					)}
 				</CustomTopbarButton>
 			</Stack>
 		</AppBar>
