@@ -9,7 +9,6 @@ const Root = () => {
 			<Container
 				maxWidth={false}
 				sx={{
-					border: '1px solid white',
 					backgroundColor: 'secondary.light',
 					width: '100%',
 					height: '100%',
