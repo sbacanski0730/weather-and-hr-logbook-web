@@ -105,6 +105,22 @@ After a long time of searching for the right palette of colors referring to the 
 |-----------------------|---------------------|
 | ![Light Theme LoginPage](https://user-images.githubusercontent.com/72625642/221653879-2130cc8d-ec72-42d4-95d2-4d15acf56225.png) | ![Dark Theme LoginPage](https://user-images.githubusercontent.com/72625642/221670038-45a89d26-5d79-4f5d-ab4d-acfe769ab09c.png) |
 
+| Dark Theme RegisterPage |
+|---------------------|
+| ![Dark Theme InfoPage](https://user-images.githubusercontent.com/72625642/223751981-354044d4-a81b-40cb-a699-6bd9157219a5.png) |
+
+| Light Theme ReportsListPage | Dark Theme ReportsListPage |
+|-----------------------|---------------------|
+| ![Light Theme ReportsListPage](https://user-images.githubusercontent.com/72625642/223753062-be9cc27e-be19-4d3e-bcaa-33fa2b35f203.png) | ![Dark Theme ReportsListPage](https://user-images.githubusercontent.com/72625642/223753720-354796f7-4987-4dfc-ad66-91e99b2041ac.png) |
+
+| Light Theme AddReportPage | Dark Theme AddReportPage |
+|-----------------------|---------------------|
+| ![Light Theme AddReportPage](https://user-images.githubusercontent.com/72625642/223776201-53b44e6a-1cd2-45e0-a181-e1130c393fc9.png) | ![Dark Theme AddReportPage](https://user-images.githubusercontent.com/72625642/223775891-e90e2fb1-c542-447c-82d0-16f7064bde9f.png) |
+
+| Light Theme ReportPage | Dark Theme ReportPage |
+|-----------------------|---------------------|
+| ![Light Theme ReportPage](https://user-images.githubusercontent.com/72625642/223780448-ec0c4d77-24c3-464c-b400-5dba6ce459bc.png) | ![Dark Theme ReportPage](https://user-images.githubusercontent.com/72625642/223778152-0ec28104-b2ed-4e58-9699-d4709ab4ca09.png) |
+
 
 ## ✍️ Installation Steps
 
