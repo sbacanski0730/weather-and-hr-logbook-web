@@ -29,7 +29,7 @@ The project was created for the needs of engineering work. The idea for this pro
 - [ ] assigning employees to reports
 - [ ] preview of reports in list and calendar view
 - [ ] setting up notifications for upcoming report deadlines
-- [ ] light/dark website theme
+- [x] light/dark website theme
 
 
 ## 🔭 Project Preview
