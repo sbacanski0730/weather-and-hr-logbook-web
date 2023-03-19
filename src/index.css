@@ -3,27 +3,23 @@
 html,
 body,
 #root {
-	height: 100%;
-	width: 100%;
-	font-family: 'Montserrat', sans-serif;
+    height: 100%;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
 }
 
-/* body {
-	border: 2px dashed orange;
-} */
-
 ::-webkit-scrollbar {
-	width: 10px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-	background: #e0e0e0;
+    background: #e0e0e0;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #888;
+    background: #888;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: #555;
+    background: #555;
 }
