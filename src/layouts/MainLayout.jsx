@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Container from '@mui/material/Container';
 import UserInterface from '../components/UserInterface/UserInterface.jsx';
 
-const Root = () => (
+const MainLayout = () => (
     <>
         <UserInterface />
         <Container
@@ -22,4 +22,4 @@ const Root = () => (
     </>
 );
 
-export default Root;
+export default MainLayout;
