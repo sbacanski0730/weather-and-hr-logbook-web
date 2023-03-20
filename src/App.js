@@ -11,8 +11,8 @@ import HomePage from './pages/HomePage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import AddReportPage from './pages/AddReportPage.jsx';
-import Root from './layouts/Root.jsx';
-import AuthRoot from './layouts/AuthRoot.jsx';
+import MainLayout from './layouts/MainLayout.jsx';
+import AuthLayout from './layouts/AuthRoot.jsx';
 
 import { APP_ROUTES } from './utils/constants';
 
@@ -22,12 +22,12 @@ import InfoPage from './pages/InfoPage.jsx';
 const routing = createBrowserRouter(
     createRoutesFromElements(
         <>
-            <Route element={<AuthRoot />}>
+            <Route element={<AuthLayout />}>
                 <Route index path={APP_ROUTES.LOGIN} element={<LoginPage />} />
                 <Route path={APP_ROUTES.REGISTER} element={<RegisterPage />} />
                 <Route path={APP_ROUTES.INFO} element={<InfoPage />} />
             </Route>
-            <Route element={<Root />}>
+            <Route element={<MainLayout />}>
                 <Route path={APP_ROUTES.HOME} element={<HomePage />} />
                 <Route path={APP_ROUTES.PROJECT_INFO} element={<InfoPage />} />
                 <Route path={APP_ROUTES.ADD_REPORT} element={<AddReportPage />} />

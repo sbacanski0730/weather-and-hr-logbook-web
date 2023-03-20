@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Container from '@mui/material/Container';
 import AuthInterface from '../components/AuthInterface/AuthInterface.jsx';
 
-const AuthRoot = () => (
+const AuthLayout = () => (
     <>
         <AuthInterface />
         <Container
@@ -22,4 +22,4 @@ const AuthRoot = () => (
     </>
 );
 
-export default AuthRoot;
+export default AuthLayout;
