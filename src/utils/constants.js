@@ -11,6 +11,7 @@ export const APP_ROUTES = {
     REGISTER: '/register',
     INFO: '/info',
     PROJECT_INFO: '/project-info',
+    REPORT: '/report/:reportId',
     REPORTS: '/reports',
     ADD_REPORT: '/add-report',
 };
