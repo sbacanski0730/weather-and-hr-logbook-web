@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { Link as ReactLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, Link as ReactLink } from 'react-router-dom';
+
 import {
     styled,
     Container,
@@ -11,12 +12,9 @@ import {
     Grid,
     Link,
 } from '@mui/material';
+import { APP_ROUTES, API_ROUTES } from '../utils/constants';
 
-// TODO: move this function to auth context
-const handleLogin = (email, password) => {
-    console.log(email);
-    console.log(password);
-};
+import { authenticateUserToken, isValidateLogin } from '../utils/authFunction';
 
 const CustomTextField = styled(TextField)(({ theme }) => ({
     // do tego napisu nad inputem
@@ -45,10 +43,68 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
 }));
 
 const LoginPage = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [infoContent, setInfoContent] = useState('');
 
-    //   const { themeMode, toggleTheme } = useContext(ThemeContext);
+    useEffect(() => {
+        const authenticateForLoginPage = async () => {
+            const { verify } = await authenticateUserToken();
+
+            if (verify) {
+                navigate('/');
+            } else {
+                localStorage.removeItem('token');
+            }
+        };
+        authenticateForLoginPage();
+    }, []);
+
+    const handleLogin = async () => {
+        try {
+            if (isValidateLogin(email, password)) {
+                const response = await fetch(API_ROUTES.LOGIN, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Request-Headers': 'token',
+                    },
+                    body: JSON.stringify({
+                        email,
+                        password,
+                    }),
+                });
+
+                if (!response.ok) {
+                    const { message } = await response.json();
+                    setInfoContent(message);
+                    setTimeout(() => {
+                        setInfoContent('');
+                    }, 5000);
+                }
+                if (response.ok) {
+                    const { status, message } = await response.json();
+                    if (status) {
+                        localStorage.setItem('token', response.headers.get('token'));
+                        navigate(APP_ROUTES.HOME);
+                    }
+                    if (!status) {
+                        setInfoContent(message);
+                        setPassword('');
+                        setTimeout(() => {
+                            setInfoContent('');
+                        }, 5000);
+                    }
+                }
+            }
+        } catch (err) {
+            setInfoContent(err);
+            setTimeout(() => {
+                setInfoContent('');
+            }, 5000);
+        }
+    };
 
     return (
         <Container
@@ -103,6 +159,19 @@ const LoginPage = () => {
                                 type="password"
                                 onChange={(e) => setPassword(e.target.value)}
                             />
+                            {infoContent && (
+                                <Typography
+                                    variant="subtitle2"
+                                    sx={{
+                                        m: 0,
+                                        px: 1,
+                                        color: '#ff0000',
+                                        boxShadow: 'none',
+                                    }}
+                                >
+                                    {infoContent}
+                                </Typography>
+                            )}
                             <Button
                                 variant="contained"
                                 fullWidth
@@ -114,7 +183,7 @@ const LoginPage = () => {
                                     boxShadow: 'none',
                                     '&:hover': { boxShadow: 'none' },
                                 }}
-                                onClick={() => handleLogin(email, password)}
+                                onClick={() => handleLogin()}
                             >
                                 Login
                             </Button>
@@ -150,7 +219,7 @@ const LoginPage = () => {
                                             justifyContent: 'flex-end',
                                         }}
                                     >
-                                        Don&apos;t have an account? Register
+                                        Don`&#39`t have an account? Register
                                     </Link>
                                 </Grid>
                             </Grid>
