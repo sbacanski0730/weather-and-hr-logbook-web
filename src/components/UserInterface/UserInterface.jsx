@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { Link as ReactLink } from 'react-router-dom';
+import { Link as ReactLink, useNavigate } from 'react-router-dom';
+
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Badge from '@mui/material/Badge';
@@ -24,17 +25,23 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { APP_ROUTES } from '../../utils/constants';
 import CustomColoredSidebarDrawer from '../styled-components/CustomColoredSidebarDrawer.jsx';
 import CustomSidebarListItem from '../styled-components/CustomSidebarListItem.jsx';
 import CustomTopbarIconButton from '../styled-components/CustomTopbarIconButton.jsx';
 import CustomTopbarButton from '../styled-components/CustomTopbarButton.jsx';
-import { ThemeContext } from '../../App';
 
 const UserInterface = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [notification] = useState(0);
+    const navigate = useNavigate();
 
     const { themeMode, toggleTheme } = useContext(ThemeContext);
+
+    const logout = () => {
+        localStorage.removeItem('token');
+        navigate(APP_ROUTES.LOGIN);
+    };
 
     return (
         <>
@@ -95,6 +102,7 @@ const UserInterface = () => {
                                 gap: '10px',
                                 borderRadius: '40px',
                             }}
+                            onClick={logout}
                         >
                             <LogoutIcon />
                             <Typography>Logout</Typography>
@@ -102,7 +110,6 @@ const UserInterface = () => {
                     </Stack>
                 </Box>
             </AppBar>
-
             {/* Sidebar */}
             <CustomColoredSidebarDrawer
                 anchor="left"

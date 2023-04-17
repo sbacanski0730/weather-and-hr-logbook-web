@@ -3,6 +3,7 @@ const API_URL = 'http://localhost:5014';
 export const API_ROUTES = {
     LOGIN: `${API_URL}/auth/login`,
     REGISTER: `${API_URL}/auth/register`,
+    GET_USER: `${API_URL}/user/get-user`,
 };
 
 export const APP_ROUTES = {
