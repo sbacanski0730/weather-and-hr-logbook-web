@@ -30,6 +30,7 @@ import CustomColoredSidebarDrawer from '../styled-components/CustomColoredSideba
 import CustomSidebarListItem from '../styled-components/CustomSidebarListItem.jsx';
 import CustomTopbarIconButton from '../styled-components/CustomTopbarIconButton.jsx';
 import CustomTopbarButton from '../styled-components/CustomTopbarButton.jsx';
+import { ThemeContext } from '../../App';
 
 const UserInterface = () => {
     const [isOpen, setIsOpen] = useState(false);

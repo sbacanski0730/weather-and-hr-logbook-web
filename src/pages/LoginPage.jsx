@@ -219,7 +219,7 @@ const LoginPage = () => {
                                             justifyContent: 'flex-end',
                                         }}
                                     >
-                                        Don`&#39`t have an account? Register
+                                        Don&apos;t have an account? Register
                                     </Link>
                                 </Grid>
                             </Grid>
