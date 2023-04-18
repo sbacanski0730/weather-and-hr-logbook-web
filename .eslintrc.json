@@ -21,6 +21,7 @@
         "linebreak-style": ["error", "windows"],
         "react/react-in-jsx-scope": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-        "import/no-cycle": "warn"
+        "import/no-cycle": "warn",
+        "no-underscore-dangle": "off"
     }
 }
