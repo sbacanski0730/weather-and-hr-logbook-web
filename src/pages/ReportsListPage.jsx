@@ -47,33 +47,18 @@ const ReportsListPage = () => {
     }));
 
     return (
-        <Container
-            maxWidth="xl"
-            sx={
-                {
-                    // border: 1,
-                    // height: '80vh',
-                }
-            }
-        >
-            <TableContainer sx={{}}>
+        <Container maxWidth="xl">
+            <TableContainer sx={{ maxHeight: 440 }}>
                 <Table stickyHeader>
-                    <TableHead sx={{ border: '1px dotted yellow' }}>
-                        <TableRow
-                            sx={
-                                {
-                                    // border: '1px dotted #ffff12'
-                                }
-                            }
-                        >
+                    <TableHead sx={{ border: '2px dotted orange', backgroundColor: 'red' }}>
+                        <TableRow>
                             {columns.map((column) => (
                                 <>
                                     <TableCell
                                         key={column.label}
                                         align="center"
-                                        style={{
-                                            borderBottom: '1px solid white',
-                                            backgroundColor: 'transparent',
+                                        sx={{
+                                            backgroundColor: 'primary.dark',
                                         }}
                                     >
                                         {column.label}
@@ -82,15 +67,7 @@ const ReportsListPage = () => {
                             ))}
                         </TableRow>
                     </TableHead>
-                    <TableBody
-                        sx={
-                            {
-                                // maxHeight: '300px',
-                                // border: '1px dotted yellow',
-                                // backgroundColor: 'red',
-                            }
-                        }
-                    >
+                    <TableBody>
                         {rows.map((row) => (
                             <TableRow key={row.id}>
                                 <TableCell align="center">{row.date.substring(0, 10)}</TableCell>
