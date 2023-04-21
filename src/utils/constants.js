@@ -16,4 +16,5 @@ export const APP_ROUTES = {
     REPORT: '/report/:reportId',
     REPORTS: '/reports',
     ADD_REPORT: '/add-report',
+    ERROR: '/*',
 };

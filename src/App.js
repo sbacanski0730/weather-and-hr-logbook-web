@@ -20,6 +20,7 @@ import { APP_ROUTES } from './utils/constants';
 import createProjectTheme from './theme/createProjectTheme';
 import InfoPage from './pages/InfoPage.jsx';
 import ReportsListPage from './pages/ReportsListPage.jsx';
+import Error404Page from './pages/Error404Page.jsx';
 
 const routing = createBrowserRouter(
     createRoutesFromElements(
@@ -35,6 +36,7 @@ const routing = createBrowserRouter(
                 <Route path={APP_ROUTES.ADD_REPORT} element={<AddReportPage />} />
                 <Route path={APP_ROUTES.REPORT} element={<ReportPage />} />
                 <Route path={APP_ROUTES.REPORTS} element={<ReportsListPage />} />
+                <Route path={APP_ROUTES.ERROR} element={<Error404Page />} />
             </Route>
         </>
     )
