@@ -19,6 +19,7 @@ import { APP_ROUTES } from './utils/constants';
 
 import createProjectTheme from './theme/createProjectTheme';
 import InfoPage from './pages/InfoPage.jsx';
+import ReportsListPage from './pages/ReportsListPage.jsx';
 
 const routing = createBrowserRouter(
     createRoutesFromElements(
@@ -33,6 +34,7 @@ const routing = createBrowserRouter(
                 <Route path={APP_ROUTES.PROJECT_INFO} element={<InfoPage />} />
                 <Route path={APP_ROUTES.ADD_REPORT} element={<AddReportPage />} />
                 <Route path={APP_ROUTES.REPORT} element={<ReportPage />} />
+                <Route path={APP_ROUTES.REPORTS} element={<ReportsListPage />} />
             </Route>
         </>
     )
