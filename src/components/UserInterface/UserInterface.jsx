@@ -162,7 +162,7 @@ const UserInterface = () => {
                             },
                         ].map(({ name, icon, path }, index) => (
                             <React.Fragment key={index}>
-                                <CustomSidebarListItem lassName="hereIAm" disablePadding>
+                                <CustomSidebarListItem disablePadding>
                                     <ListItemButton
                                         divider={true}
                                         onClick={() => {
