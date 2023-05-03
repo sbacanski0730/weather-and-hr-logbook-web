@@ -26,16 +26,16 @@ const routing = createBrowserRouter(
     createRoutesFromElements(
         <>
             <Route element={<AuthLayout />}>
-                <Route index path={APP_ROUTES.LOGIN} element={<LoginPage />} />
-                <Route path={APP_ROUTES.REGISTER} element={<RegisterPage />} />
-                <Route path={APP_ROUTES.INFO} element={<InfoPage />} />
+                <Route index exact path={APP_ROUTES.LOGIN} element={<LoginPage />} />
+                <Route exact path={APP_ROUTES.REGISTER} element={<RegisterPage />} />
+                <Route exact path={APP_ROUTES.INFO} element={<InfoPage />} />
             </Route>
             <Route element={<MainLayout />}>
-                <Route path={APP_ROUTES.HOME} element={<HomePage />} />
-                <Route path={APP_ROUTES.PROJECT_INFO} element={<InfoPage />} />
-                <Route path={APP_ROUTES.ADD_REPORT} element={<AddReportPage />} />
-                <Route path={APP_ROUTES.REPORT} element={<ReportPage />} />
-                <Route path={APP_ROUTES.REPORTS} element={<ReportsListPage />} />
+                <Route exact path={APP_ROUTES.HOME} element={<HomePage />} />
+                <Route exact path={APP_ROUTES.PROJECT_INFO} element={<InfoPage />} />
+                <Route exact path={APP_ROUTES.ADD_REPORT} element={<AddReportPage />} />
+                <Route exact path={APP_ROUTES.REPORT} element={<ReportPage />} />
+                <Route exact path={APP_ROUTES.REPORTS} element={<ReportsListPage />} />
                 <Route path={APP_ROUTES.ERROR} element={<Error404Page />} />
             </Route>
         </>

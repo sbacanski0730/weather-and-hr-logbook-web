@@ -8,6 +8,7 @@ export const API_ROUTES = {
 };
 
 export const APP_ROUTES = {
+    ERROR: '*',
     HOME: '/',
     LOGIN: '/login',
     REGISTER: '/register',
@@ -16,5 +17,6 @@ export const APP_ROUTES = {
     REPORT: '/report/:reportId',
     REPORTS: '/reports',
     ADD_REPORT: '/add-report',
-    ERROR: '/*',
+    EMPLOYEES: '/employees',
+    CALENDAR: '/calendar',
 };
