@@ -17,7 +17,6 @@ import FolderIcon from '@mui/icons-material/Folder';
 import AddIcon from '@mui/icons-material/Add';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PersonIcon from '@mui/icons-material/Person';
-import SettingsIcon from '@mui/icons-material/Settings';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 import DarkModeSharpIcon from '@mui/icons-material/DarkModeSharp';
@@ -149,11 +148,6 @@ const UserInterface = () => {
                                 name: 'Employees',
                                 icon: <PersonIcon sx={{ fontSize: '30px' }} />,
                                 path: '/employees',
-                            },
-                            {
-                                name: 'Settings',
-                                icon: <SettingsIcon sx={{ fontSize: '30px' }} />,
-                                path: '/settings',
                             },
                             {
                                 name: 'Project info',
