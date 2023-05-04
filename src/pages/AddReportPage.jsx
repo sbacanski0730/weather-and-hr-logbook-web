@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -20,22 +20,32 @@ import {
     BsFillCloudsFill,
     BsFillCloudFill,
 } from 'react-icons/bs';
+import { Typography } from '@mui/material';
+import { ReportContext } from '../contexts/ReportContext';
 
 import CustomTimePicker from '../components/styled-components/CustomTimePicker.jsx';
 import CustomDatePicker from '../components/styled-components/CustomDatePicker.jsx';
 import CustomButton from '../components/styled-components/CustomButton.jsx';
 import CustomTitleTextField from '../components/styled-components/CustomTitleTextField.jsx';
 import CustomTextField from '../components/styled-components/CustomTextField.jsx';
+import reportValidation from '../utils/reportValidation';
 
 const AddReport = () => {
+    const { addReport } = useContext(ReportContext);
+    const [info, setInfo] = useState('');
+    const [infoColor, setInfoColor] = useState('green');
     const [report, setReport] = useState({
         title: '',
-        date: new Date().toISOString().slice(0, 10),
+        date: new Date().toJSON().slice(0, 10),
         time: new Date().toTimeString().slice(0, 8),
         sky_status: '',
         ship_status: '',
         wind_speed: '',
         ship_localization: '',
+        startHarbour: '',
+        destinationHarbour: '',
+        watchNumber: 1,
+        watchOfficer: '-',
         employees: [],
         content: '',
     });
@@ -50,7 +60,27 @@ const AddReport = () => {
         content_error: false,
     });
 
-    const handleAddReport = () => {};
+    const handleAddReport = async () => {
+        console.log(report);
+        try {
+            reportValidation(report);
+            const response = await addReport(report);
+            if (response.status === false) {
+                setInfo(response.message);
+                setInfoColor('red');
+                setTimeout(() => setInfo(''), 5000);
+            }
+            if (response.status === true) {
+                setInfo('Report added');
+                setInfoColor('green');
+                setTimeout(() => setInfo(''), 5000);
+            }
+        } catch (err) {
+            setInfo(err.message);
+            setInfoColor('red');
+            setTimeout(() => setInfo(''), 10000);
+        }
+    };
 
     return (
         <>
@@ -132,7 +162,6 @@ const AddReport = () => {
                                             <CustomDatePicker
                                                 label="Date"
                                                 fullWidth
-                                                // error={error.date_error ? true : false}
                                                 error={true}
                                                 format="YYYY-MM-DD"
                                                 value={dayjs(report.date)}
@@ -144,10 +173,16 @@ const AddReport = () => {
                                                     },
                                                 }}
                                                 inputFormat="dd-MM-yyyy"
-                                                onChange={(newValue) => {
+                                                onChange={(e) => {
                                                     setReport({
                                                         ...report,
-                                                        date: newValue.$d.toISOString(),
+                                                        date: `${e.$d
+                                                            .toLocaleDateString()
+                                                            .slice(6, 10)}-${e.$d
+                                                            .toLocaleDateString()
+                                                            .slice(3, 5)}-${e.$d
+                                                            .toLocaleDateString()
+                                                            .slice(0, 2)}`,
                                                     });
                                                 }}
                                             />
@@ -157,7 +192,6 @@ const AddReport = () => {
                                                 fullWidth
                                                 ampm={false}
                                                 label="Time"
-                                                // value={dayjs(report.time)}
                                                 value={dayjs(report.time, 'HH:mm')}
                                                 slotProps={{
                                                     textField: {
@@ -166,12 +200,10 @@ const AddReport = () => {
                                                         size: 'small',
                                                     },
                                                 }}
-                                                onChange={(newValue) => {
+                                                onChange={(e) => {
                                                     setReport({
                                                         ...report,
-                                                        time: newValue.$d
-                                                            .toTimeString()
-                                                            .slice(0, 8),
+                                                        time: e.$d.toLocaleTimeString(),
                                                     });
                                                 }}
                                             />
@@ -264,7 +296,6 @@ const AddReport = () => {
                                                     </InputAdornment>
                                                 ),
                                             }}
-                                            // TODO: validate "wind_speed" - just numbers, no letters
                                             onChange={(e) =>
                                                 setReport({
                                                     ...report,
@@ -272,10 +303,74 @@ const AddReport = () => {
                                                 })
                                             }
                                         />
-                                        {/* TODO: validate "localization" - just proper localization format */}
+
                                         <CustomTextField
                                             fullWidth
                                             label="Localization"
+                                            error={!!error.ship_localization_error}
+                                            onChange={(e) =>
+                                                setReport({
+                                                    ...report,
+                                                    ship_localization: e.target.value,
+                                                })
+                                            }
+                                        />
+                                    </Box>
+                                    <Box
+                                        sx={{
+                                            // border: '1px dashed pink',
+                                            display: 'flex',
+                                            flexDirection: 'row',
+                                            width: '100%',
+                                            gap: '5px',
+                                        }}
+                                    >
+                                        <CustomTextField
+                                            fullWidth
+                                            label="Start Harbour"
+                                            onChange={(e) =>
+                                                setReport({
+                                                    ...report,
+                                                    startHarbour: e.target.value,
+                                                })
+                                            }
+                                        />
+
+                                        <CustomTextField
+                                            fullWidth
+                                            label="Destination Harbour"
+                                            error={!!error.ship_localization_error}
+                                            onChange={(e) =>
+                                                setReport({
+                                                    ...report,
+                                                    destinationHarbour: e.target.value,
+                                                })
+                                            }
+                                        />
+                                    </Box>
+                                    <Box
+                                        sx={{
+                                            // border: '1px dashed pink',
+                                            display: 'flex',
+                                            flexDirection: 'row',
+                                            width: '100%',
+                                            gap: '5px',
+                                        }}
+                                    >
+                                        <CustomTextField
+                                            fullWidth
+                                            label="Watch Officer"
+                                            onChange={(e) =>
+                                                setReport({
+                                                    ...report,
+                                                    watchOfficer: e.target.value,
+                                                })
+                                            }
+                                        />
+
+                                        <CustomTextField
+                                            fullWidth
+                                            label="Watch Number"
                                             error={!!error.ship_localization_error}
                                             onChange={(e) =>
                                                 setReport({
@@ -294,8 +389,6 @@ const AddReport = () => {
                                 md={12}
                                 lg={6}
                                 sx={{
-                                    // display: 'flex',
-                                    // border: '1px dashed orange',
                                     p: 2,
                                 }}
                             >
@@ -329,9 +422,17 @@ const AddReport = () => {
                                 width: '100%',
                                 display: 'flex',
                                 justifyContent: 'end',
+                                alignItems: 'center',
                                 px: 2,
+                                gap: '10px',
                             }}
                         >
+                            <Typography
+                                variant="h5"
+                                sx={{ fontWeight: 600, color: `${infoColor}` }}
+                            >
+                                {info}
+                            </Typography>
                             <CustomButton variant="contained" onClick={handleAddReport}>
                                 Add Report
                             </CustomButton>
