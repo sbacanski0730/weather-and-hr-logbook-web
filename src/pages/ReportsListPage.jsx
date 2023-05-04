@@ -1,39 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
 
 import Container from '@mui/material/Container';
 import Grow from '@mui/material/Grow';
 import CircularProgress from '@mui/material/CircularProgress';
-import { API_ROUTES, APP_ROUTES } from '../utils/constants';
+import { APP_ROUTES } from '../utils/constants';
 import ShowReportButton from '../components/ShowReportButton/ShowReportButton.jsx';
 import CustomButton from '../components/styled-components/CustomButton.jsx';
+import { ReportContext } from '../contexts/ReportContext';
 
 const ReportsListPage = () => {
     const navigate = useNavigate();
 
-    const [userReports, setUserReports] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-
-    const fetchReports = async () => {
-        setIsLoading(true);
-        const response = await fetch(API_ROUTES.REPORTS, {
-            headers: {
-                method: 'post',
-                'content-type': 'application/json',
-                token: localStorage.getItem('token'),
-            },
-        })
-            .then((res) => res.json())
-            .catch((e) => console.log(e));
-        // setIsLoading(false);
-        setUserReports(response.content);
-        console.log(response);
-
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 3000);
-    };
+    const { fetchReports, userReports, isLoading } = useContext(ReportContext);
 
     useEffect(() => {
         fetchReports();
