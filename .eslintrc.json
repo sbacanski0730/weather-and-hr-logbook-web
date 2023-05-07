@@ -23,6 +23,7 @@
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "import/no-cycle": "warn",
         "no-underscore-dangle": "off",
-        "react-hooks/exhaustive-deps": 0
+        "react-hooks/exhaustive-deps": 0,
+        "no-unused-vars": "warn"
     }
 }

@@ -1,5 +1,5 @@
-import React from 'react';
-// import { useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
@@ -18,7 +18,8 @@ import {
 
 import { BiErrorCircle } from 'react-icons/bi';
 
-import VisibilityIcon from '@mui/icons-material/Visibility';
+import { ReportContext } from '../contexts/ReportContext';
+import dateAndTimeFormatter from '../utils/dateAndTimeFormatter';
 
 const showSkyStatusIcon = (value) => {
     if (value === 'rain') return <BsCloudRainHeavyFill />;
@@ -31,138 +32,168 @@ const showSkyStatusIcon = (value) => {
     return <BiErrorCircle />;
 };
 
-const ReportPage = () => (
-    // const { reportId } = useParams();
-    // console.log(reportId);
+const ReportPage = () => {
+    const { reportId } = useParams();
+    const { getReportById } = useContext(ReportContext);
+    const [report, setReport] = useState({});
 
-    <>
-        <Paper elevation={10} sx={{ backgroundColor: 'primary.light' }}>
-            <Container
-                maxWidth="xl"
-                sx={{
-                    // border: '1px solid #fff',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    height: '70vh',
-                    p: 2,
-                    minWidth: '80vw',
-                }}
-            >
-                <Stack
-                    direction="column"
+    useEffect(() => {
+        const fetchReport = async () => {
+            const { content } = await getReportById(reportId);
+            setReport(content);
+        };
+        fetchReport();
+    }, []);
+
+    return (
+        <>
+            <Paper elevation={10} sx={{ backgroundColor: 'primary.light' }}>
+                <Container
+                    maxWidth="xl"
                     sx={{
-                        // border: '1px dotted yellow',
-                        width: '100%',
-                        p: 3,
+                        display: 'flex',
+                        justifyContent: 'center',
+                        height: '70vh',
+                        p: 2,
+                        minWidth: '80vw',
                     }}
-                    spacing={2}
                 >
-                    <Typography
-                        variant="h5"
-                        align="right"
-                        sx={
-                            {
-                                // border: '1px solid white',
-                            }
-                        }
-                    >
-                        13:45 24-04-2023
-                    </Typography>
-                    <Typography
-                        variant="h2"
+                    <Stack
+                        direction="column"
                         sx={{
-                            px: 3,
-                            mt: 0,
-                            // border: '1px solid orange',
-                        }}
-                    >
-                        Lorem Title, ipsum dolor.
-                    </Typography>
-                    <Grid
-                        container
-                        columns={12}
-                        sx={{
-                            // border: '1px dashed orange',
                             width: '100%',
-                            justifyContent: 'space-between',
-                            px: 6,
+                            p: 3,
                         }}
+                        spacing={2}
                     >
-                        <Grid item xl={3}>
-                            <Typography variant="h4">at sea</Typography>
-                        </Grid>
-                        <Grid item xl={3}>
-                            <Typography variant="h4" sx={{ fontSize: '2.3rem' }}>
-                                {showSkyStatusIcon('snow')}
-                            </Typography>
-                        </Grid>
-                        <Grid item xl={3}>
-                            <Typography variant="h4">4 m/s</Typography>
+                        <Typography variant="h5" align="right">
+                            {report.date && dateAndTimeFormatter(report.date)}
+                        </Typography>
+                        <Typography
+                            variant="h2"
+                            sx={{
+                                px: 3,
+                                mt: 0,
+                            }}
+                        >
+                            {report.title}
+                        </Typography>
+                        <Grid
+                            container
+                            columns={12}
+                            sx={{
+                                width: '100%',
+                                display: 'flex',
+                                flexDirection: 'row',
+                                justifyContent: 'space-between',
+                                px: 10,
+                                py: 1,
+                            }}
+                        >
+                            <Grid item xl={3} sx={{ position: 'relative' }}>
+                                <Typography variant="body1" sx={{ position: 'absolute', top: '-19px', left: '-35px' }}>
+                                    Ship status:
+                                </Typography>
+                                <Typography variant="h4" sx={{ textTransform: 'capitalize' }}>
+                                    {report.shipStatus}
+                                </Typography>
+                            </Grid>
+                            <Grid item xl={3} sx={{ position: 'relative' }}>
+                                <Typography variant="body1" sx={{ position: 'absolute', top: '-19px', left: '-35px' }}>
+                                    Weather:
+                                </Typography>
+                                <Typography variant="h4" sx={{ fontSize: '2rem' }}>
+                                    {showSkyStatusIcon(report.skyStatus)}
+                                </Typography>
+                            </Grid>
+                            <Grid item xl={3} sx={{ position: 'relative' }}>
+                                <Typography
+                                    variant="body1"
+                                    sx={{ position: 'absolute', top: '-19px', left: '-15px', whiteSpace: 'nowrap' }}
+                                >
+                                    Wind Speed:
+                                </Typography>
+                                <Typography variant="h4">{report.windSpeed} m/s</Typography>
+                            </Grid>
+                            <Grid
+                                item
+                                xl={3}
+                                sx={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    gap: '5px',
+                                    position: 'relative',
+                                }}
+                            >
+                                <Typography
+                                    variant="body1"
+                                    sx={{ position: 'absolute', top: '-19px', left: '-45px', whiteSpace: 'nowrap' }}
+                                >
+                                    Ship Localization:
+                                </Typography>
+                                <Typography variant="h4"> {report.shipLocalization} </Typography>
+                                {/* <VisibilityIcon /> */}
+                            </Grid>
                         </Grid>
                         <Grid
-                            item
-                            xl={3}
-                            sx={{ display: 'flex', flexDirection: 'row', gap: '5px' }}
+                            container
+                            columns={12}
+                            sx={{
+                                // border: '1px dashed orange',
+                                width: '100%',
+                                justifyContent: 'space-evenly',
+                                px: 6,
+                                py: 1,
+                            }}
                         >
-                            <Typography variant="h4"> 55.13126446 55.46468464 </Typography>
-                            <VisibilityIcon />
+                            <Grid item xl={3} sx={{ position: 'relative' }}>
+                                <Typography variant="body1" sx={{ position: 'absolute', top: '-19px', left: '-15px' }}>
+                                    Start:
+                                </Typography>
+                                <Typography variant="h4">{report.startHarbour}</Typography>
+                            </Grid>
+                            <Grid item xl={3} sx={{ position: 'relative' }}>
+                                <Typography variant="body1" sx={{ position: 'absolute', top: '-19px', left: '-15px' }}>
+                                    Destination:
+                                </Typography>
+                                <Typography variant="h4">{report.destinationHarbour}</Typography>
+                            </Grid>
+                            <Grid item xl={3} sx={{ position: 'relative' }}>
+                                <Typography
+                                    variant="body1"
+                                    sx={{ position: 'absolute', top: '-19px', left: '-30px', whiteSpace: 'nowrap' }}
+                                >
+                                    Watch Officer:
+                                </Typography>
+                                <Typography variant="h4">{report.watchOfficer}</Typography>
+                            </Grid>
+                            <Grid item xl={3} sx={{ position: 'relative' }}>
+                                <Typography
+                                    variant="body1"
+                                    sx={{ position: 'absolute', top: '-19px', left: '-25px', whiteSpace: 'nowrap' }}
+                                >
+                                    Watch Number:
+                                </Typography>
+                                <Typography variant="h4">{report.watchNumber}</Typography>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                    <Typography
-                        variant="body1"
-                        sx={{
-                            // border: '1px solid pink',
-                            maxHeight: '450px',
-                            overflow: 'hidden',
-                            overflowY: 'auto',
-                            py: 1,
-                            px: 3,
-                        }}
-                    >
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit debitis eum,
-                        dolorum exercitationem necessitatibus numquam illum, nostrum, eligendi
-                        expedita alias aliquam tenetur esse sed et. Facilis dolorum sequi nihil
-                        culpa eligendi odio ut cum. Dolorem ipsam beatae harum ea debitis deserunt
-                        laudantium nulla at modi iusto fuga id, eius hic itaque ab qui. Rerum,
-                        consectetur? Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-                        debitis eum, dolorum exercitationem Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Mollitia nihil beatae doloribus modi eveniet est quae
-                        aperiam, corporis recusandae quos. beatae doloribus modi eveniet est quae
-                        aperiam, corporis recusandae quos. necessitatibus numquam illum, nostrum,
-                        eligendi expedita alias aliquam tenetur esse sed et. Facilis dolorum sequi
-                        nihil culpa eligendi odio ut cum. Dolorem ipsam beatae harum ea debitis
-                        deserunt laudantium nulla at modi iusto fuga id, eius hic itaque ab qui.
-                        Rerum, consectetur? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Velit debitis eum, dolorum exercitationem necessitatibus numquam illum,
-                        nostrum, eligendi expedita alias aliquam tenetur esse sed et. Facilis
-                        dolorum sequi nihil culpa eligendi odio ut cum. Dolorem ipsam beatae harum
-                        ea debitis deserunt laudantium nulla at modi iusto fuga id, eius hic itaque
-                        ab qui. Rerum, consectetur? Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Velit debitis eum, dolorum exercitationem necessitatibus
-                        numquam illum, nostrum, eligendi expedita alias aliquam tenetur esse sed et.
-                        Facilis dolorum sequi nihil culpa eligendi odio ut cum. Dolorem ipsam beatae
-                        harum ea debitis deserunt laudantium nulla at modi iusto fuga id, eius hic
-                        itaque ab qui. Rerum, consectetur? Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Velit debitis eum, dolorum exercitationem necessitatibus
-                        numquam illum, nostrum, eligendi expedita alias aliquam tenetur esse sed et.
-                        Facilis dolorum sequi nihil culpa eligendi odio ut cum. Dolorem ipsam beatae
-                        harum ea debitis deserunt laudantium nulla at modi iusto fuga id, eius hic
-                        itaque ab qui. Rerum, consectetur? Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Velit debitis eum, dolorum exercitationem necessitatibus
-                        numquam illum, nostrum, eligendi expedita alias aliquam tenetur esse sed et.
-                        Facilis dolorum sequi nihil culpa eligendi odio ut cum. Dolorem ipsam beatae
-                        harum ea debitis deserunt laudantium nulla at modi iusto fuga id, eius hic
-                        itaque ab qui. Rerum, consectetur? Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Velit debitis eum, dolorum exercitationem necessitatibus
-                        numquam illum, nostrum, eligendi expedita alias aliquam tenetur esse sed et.
-                        Facilis dolorum sequi nihil culpa eligendi odio ut cum. Dolorem ipsam beatae
-                        harum ea debitis deserunt laudantium nulla at modi iusto fuga id, eius hic
-                        itaque ab qui. Rerum, consectetur? Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Velit debitis eum, dolorum exerci
-                    </Typography>
-                </Stack>
-            </Container>
-        </Paper>
-    </>
-);
+                        <Typography
+                            variant="body1"
+                            sx={{
+                                maxHeight: '450px',
+                                overflow: 'hidden',
+                                overflowY: 'auto',
+                                py: 1,
+                                px: 3,
+                                whiteSpace: 'pre-wrap',
+                            }}
+                        >
+                            {report.content}
+                        </Typography>
+                    </Stack>
+                </Container>
+            </Paper>
+        </>
+    );
+};
 export default ReportPage;

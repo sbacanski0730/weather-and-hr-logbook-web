@@ -6,6 +6,7 @@ export const API_ROUTES = {
     REPORTS: `${API_URL}/user/get-all-reports`,
     GET_USER: `${API_URL}/user/get-user`,
     ADD_REPORT: `${API_URL}/report/add`,
+    GET_REPORT: `${API_URL}/report/:id`,
 };
 
 export const APP_ROUTES = {
