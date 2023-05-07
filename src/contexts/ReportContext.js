@@ -21,11 +21,7 @@ export const ReportContextProvider = ({ children }) => {
             .catch((e) => console.log(e));
 
         setUserReports(response.content);
-        console.log(response.content);
-
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 2400);
+        setIsLoading(false);
     };
 
     const addReport = async (report) => {
@@ -54,9 +50,21 @@ export const ReportContextProvider = ({ children }) => {
         return { status: response.status, message: response.message };
     };
 
+    const getReportById = async (reportId) => {
+        const response = await fetch(API_ROUTES.GET_REPORT.replace(':id', reportId), {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                token: localStorage.getItem('token'),
+            },
+        }).then((res) => res.json());
+
+        return response;
+    };
+
     return (
         <>
-            <ReportContext.Provider value={{ userReports, fetchReports, isLoading, addReport }}>
+            <ReportContext.Provider value={{ userReports, fetchReports, isLoading, addReport, getReportById }}>
                 {children}
             </ReportContext.Provider>
         </>

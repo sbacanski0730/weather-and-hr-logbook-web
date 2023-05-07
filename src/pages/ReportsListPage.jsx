@@ -5,6 +5,15 @@ import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from
 import Container from '@mui/material/Container';
 import Grow from '@mui/material/Grow';
 import CircularProgress from '@mui/material/CircularProgress';
+import {
+    BsCloudRainHeavyFill,
+    BsFillSunFill,
+    BsWind,
+    BsFillCloudSnowFill,
+    BsFillCloudsFill,
+    BsFillCloudFill,
+} from 'react-icons/bs';
+import { BiErrorCircle } from 'react-icons/bi';
 import { APP_ROUTES } from '../utils/constants';
 import ShowReportButton from '../components/ShowReportButton/ShowReportButton.jsx';
 import CustomButton from '../components/styled-components/CustomButton.jsx';
@@ -14,6 +23,17 @@ const ReportsListPage = () => {
     const navigate = useNavigate();
 
     const { fetchReports, userReports, isLoading } = useContext(ReportContext);
+
+    const showSkyStatusIcon = (value) => {
+        if (value === 'rain') return <BsCloudRainHeavyFill />;
+        if (value === 'sun') return <BsFillSunFill />;
+        if (value === 'wind') return <BsWind />;
+
+        if (value === 'snow') return <BsFillCloudSnowFill />;
+        if (value === 'heavy-clouds') return <BsFillCloudsFill />;
+        if (value === 'clouds') return <BsFillCloudFill />;
+        return <BiErrorCircle />;
+    };
 
     useEffect(() => {
         fetchReports();
@@ -82,9 +102,7 @@ const ReportsListPage = () => {
                                 </>
                             ) : (
                                 <Table stickyHeader>
-                                    <TableHead
-                                        sx={{ border: '2px dotted orange', backgroundColor: 'red' }}
-                                    >
+                                    <TableHead sx={{ border: '2px dotted orange', backgroundColor: 'red' }}>
                                         <TableRow>
                                             {columns.map((column) => (
                                                 <>
@@ -105,21 +123,23 @@ const ReportsListPage = () => {
                                     <TableBody>
                                         {rows.map((row) => (
                                             <TableRow key={row.id}>
-                                                <TableCell align="center">
+                                                <TableCell sx={{ maxWidth: '300px' }} align="center">
                                                     {row.date.substring(0, 10)}
                                                 </TableCell>
-                                                <TableCell align="center">{row.title}</TableCell>
-                                                <TableCell align="center">
-                                                    {row.skyStatus}
+                                                <TableCell sx={{ maxWidth: '300px' }} align="center">
+                                                    {row.title}
                                                 </TableCell>
-                                                <TableCell align="center">
+                                                <TableCell sx={{ maxWidth: '300px' }} align="center">
+                                                    {showSkyStatusIcon(row.skyStatus)}
+                                                </TableCell>
+                                                <TableCell sx={{ maxWidth: '300px' }} align="center">
                                                     {row.shipStatus}
                                                 </TableCell>
-                                                <TableCell align="center">
+                                                <TableCell sx={{ maxWidth: '300px' }} align="center">
                                                     {row.windSpeed}
                                                 </TableCell>
-                                                <TableCell align="center">
-                                                    <ShowReportButton />
+                                                <TableCell sx={{ maxWidth: '300px' }} align="center">
+                                                    <ShowReportButton reportId={row.id} />
                                                 </TableCell>
                                             </TableRow>
                                         ))}

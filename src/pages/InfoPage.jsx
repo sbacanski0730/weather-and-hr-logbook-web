@@ -26,16 +26,15 @@ const InfoPage = () => {
                             '&:hover': { transform: 'scale(105%)' },
                         }}
                     >
-                        <Typography variant="h1" sx={{ textAlign: 'center' }}>
+                        <Typography variant="h1" sx={{ textAlign: 'center', userSelect: 'none' }}>
                             WH-Logbook
                         </Typography>
-                        <Typography variant="subtitle1" sx={{ textAlign: 'center', p: 4 }}>
-                            This project was created for the purpose of writing an engineering
-                            thesis. The aim of the project is to create an application that enables
-                            the creation, saving, editing and transfer of reports, which in their
-                            characteristics will refer to the logbook entries.
+                        <Typography variant="subtitle1" sx={{ textAlign: 'center', p: 4, userSelect: 'none' }}>
+                            This project was created for the purpose of writing an engineering thesis. The aim of the
+                            project is to create an application that enables the creation, saving, editing and transfer
+                            of reports, which in their characteristics will refer to the logbook entries.
                         </Typography>
-                        <Typography variant="subtitle2" sx={{ textAlign: 'center' }}>
+                        <Typography variant="subtitle2" sx={{ textAlign: 'center', userSelect: 'none' }}>
                             The author of the project is Szymon Bacański.
                         </Typography>
                         <Typography variant="subtitle2" sx={{ textAlign: 'center' }}>

@@ -20,7 +20,7 @@ import {
     BsFillCloudsFill,
     BsFillCloudFill,
 } from 'react-icons/bs';
-import { Typography } from '@mui/material';
+import { TextField, Typography } from '@mui/material';
 import { ReportContext } from '../contexts/ReportContext';
 
 import CustomTimePicker from '../components/styled-components/CustomTimePicker.jsx';
@@ -44,7 +44,7 @@ const AddReport = () => {
         ship_localization: '',
         startHarbour: '',
         destinationHarbour: '',
-        watchNumber: 1,
+        watchNumber: '1',
         watchOfficer: '-',
         employees: [],
         content: '',
@@ -61,7 +61,7 @@ const AddReport = () => {
     });
 
     const handleAddReport = async () => {
-        console.log(report);
+        console.log('report dawany do conteksu: ', report);
         try {
             reportValidation(report);
             const response = await addReport(report);
@@ -137,7 +137,6 @@ const AddReport = () => {
                                 lg={6}
                                 sx={{
                                     display: 'flex',
-                                    // border: '1px dashed orange',
                                     p: 2,
                                 }}
                             >
@@ -176,13 +175,9 @@ const AddReport = () => {
                                                 onChange={(e) => {
                                                     setReport({
                                                         ...report,
-                                                        date: `${e.$d
+                                                        date: `${e.$d.toLocaleDateString().slice(6, 10)}-${e.$d
                                                             .toLocaleDateString()
-                                                            .slice(6, 10)}-${e.$d
-                                                            .toLocaleDateString()
-                                                            .slice(3, 5)}-${e.$d
-                                                            .toLocaleDateString()
-                                                            .slice(0, 2)}`,
+                                                            .slice(3, 5)}-${e.$d.toLocaleDateString().slice(0, 2)}`,
                                                     });
                                                 }}
                                             />
@@ -290,11 +285,7 @@ const AddReport = () => {
                                             fullWidth
                                             label="Wind speed"
                                             InputProps={{
-                                                endAdornment: (
-                                                    <InputAdornment position="end">
-                                                        km/h
-                                                    </InputAdornment>
-                                                ),
+                                                endAdornment: <InputAdornment position="end">km/h</InputAdornment>,
                                             }}
                                             onChange={(e) =>
                                                 setReport({
@@ -375,7 +366,7 @@ const AddReport = () => {
                                             onChange={(e) =>
                                                 setReport({
                                                     ...report,
-                                                    ship_localization: e.target.value,
+                                                    watchNumber: e.target.value,
                                                 })
                                             }
                                         />
@@ -396,22 +387,35 @@ const AddReport = () => {
                                     fullWidth
                                     label="Content"
                                     multiline
+                                    onChange={(e) =>
+                                        setReport({
+                                            ...report,
+                                            content: e.target.value,
+                                        })
+                                    }
                                     sx={{
                                         height: '100%',
-                                        // border: '1px solid pink',
-                                        // overflow: 'hidden',
-                                    }}
-                                    inputProps={{
-                                        sx: {
-                                            height: '100%',
-                                            // overflow: 'scroll',
+                                        // border: 1,
+                                        // backgroundColor: 'yellow',
+                                        // maxHeight: '580px',
+                                        '& fieldset': {
+                                            display: 'none',
                                         },
                                     }}
                                     InputProps={{
                                         sx: {
                                             height: '100%',
                                             alignItems: 'flex-start',
-                                            // overflow: 'scroll',
+                                            overflowY: 'scroll',
+                                            maxHeight: '580px',
+                                            '@media screen and (max-width: 1200px)': {
+                                                maxHeight: '200px',
+                                            },
+                                        },
+                                    }}
+                                    inputProps={{
+                                        sx: {
+                                            height: '100%',
                                         },
                                     }}
                                 />
@@ -427,10 +431,7 @@ const AddReport = () => {
                                 gap: '10px',
                             }}
                         >
-                            <Typography
-                                variant="h5"
-                                sx={{ fontWeight: 600, color: `${infoColor}` }}
-                            >
+                            <Typography variant="h5" sx={{ fontWeight: 600, color: `${infoColor}` }}>
                                 {info}
                             </Typography>
                             <CustomButton variant="contained" onClick={handleAddReport}>
