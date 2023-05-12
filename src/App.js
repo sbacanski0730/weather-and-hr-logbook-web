@@ -1,10 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
-import {
-    Route,
-    RouterProvider,
-    createBrowserRouter,
-    createRoutesFromElements,
-} from 'react-router-dom';
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material';
 import HomePage from './pages/HomePage.jsx';
@@ -21,6 +16,7 @@ import createProjectTheme from './theme/createProjectTheme';
 import InfoPage from './pages/InfoPage.jsx';
 import ReportsListPage from './pages/ReportsListPage.jsx';
 import Error404Page from './pages/Error404Page.jsx';
+import VerificationPage from './pages/VerificationPage.jsx';
 
 const routing = createBrowserRouter(
     createRoutesFromElements(
@@ -29,6 +25,9 @@ const routing = createBrowserRouter(
                 <Route index exact path={APP_ROUTES.LOGIN} element={<LoginPage />} />
                 <Route exact path={APP_ROUTES.REGISTER} element={<RegisterPage />} />
                 <Route exact path={APP_ROUTES.INFO} element={<InfoPage />} />
+                <Route path={APP_ROUTES.ERROR} element={<Error404Page />} />
+                {/* <Route exact path={'/verification'} element={<VerificationPage />} /> */}
+                <Route exact path={APP_ROUTES.VERIFICATION} element={<VerificationPage />} />
             </Route>
             <Route element={<MainLayout />}>
                 <Route exact path={APP_ROUTES.HOME} element={<HomePage />} />
@@ -36,7 +35,6 @@ const routing = createBrowserRouter(
                 <Route exact path={APP_ROUTES.ADD_REPORT} element={<AddReportPage />} />
                 <Route exact path={APP_ROUTES.REPORT} element={<ReportPage />} />
                 <Route exact path={APP_ROUTES.REPORTS} element={<ReportsListPage />} />
-                <Route path={APP_ROUTES.ERROR} element={<Error404Page />} />
             </Route>
         </>
     )
