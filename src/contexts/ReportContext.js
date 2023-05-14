@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import propTypes from 'prop-types';
-import { API_ROUTES } from '../utils/constants';
+import { API_ROUTES, APP_ROUTES } from '../utils/constants';
 
 export const ReportContext = createContext();
 
@@ -58,13 +58,36 @@ export const ReportContextProvider = ({ children }) => {
                 token: localStorage.getItem('token'),
             },
         }).then((res) => res.json());
+        return response;
+    };
 
+    const deleteReport = async (reportId) => {
+        console.log('usuwam:', API_ROUTES.DELETE_REPORT.replace(':id', reportId));
+
+        const response = await fetch(API_ROUTES.DELETE_REPORT.replace(':id', reportId), {
+            method: 'delete',
+            headers: { token: localStorage.getItem('token') },
+        }).then((res) => res.json());
+        return response;
+    };
+
+    const updateReport = async (body) => {
+        const response = await fetch(API_ROUTES.UPDATE_REPORT, {
+            method: 'put',
+            headers: {
+                'Content-Type': 'application/json',
+                token: localStorage.getItem('token'),
+            },
+            body: JSON.stringify(body),
+        }).then((res) => res.json());
         return response;
     };
 
     return (
         <>
-            <ReportContext.Provider value={{ userReports, fetchReports, isLoading, addReport, getReportById }}>
+            <ReportContext.Provider
+                value={{ userReports, fetchReports, isLoading, addReport, getReportById, deleteReport, updateReport }}
+            >
                 {children}
             </ReportContext.Provider>
         </>

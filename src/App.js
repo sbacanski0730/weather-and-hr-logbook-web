@@ -17,6 +17,7 @@ import InfoPage from './pages/InfoPage.jsx';
 import ReportsListPage from './pages/ReportsListPage.jsx';
 import Error404Page from './pages/Error404Page.jsx';
 import VerificationPage from './pages/VerificationPage.jsx';
+import EditPage from './pages/EditPage.jsx';
 
 const routing = createBrowserRouter(
     createRoutesFromElements(
@@ -35,6 +36,7 @@ const routing = createBrowserRouter(
                 <Route exact path={APP_ROUTES.ADD_REPORT} element={<AddReportPage />} />
                 <Route exact path={APP_ROUTES.REPORT} element={<ReportPage />} />
                 <Route exact path={APP_ROUTES.REPORTS} element={<ReportsListPage />} />
+                <Route exact path={APP_ROUTES.EDIT} element={<EditPage />} />
             </Route>
         </>
     )

@@ -7,6 +7,8 @@ export const API_ROUTES = {
     GET_USER: `${API_URL}/user/get-user`,
     ADD_REPORT: `${API_URL}/report/add`,
     GET_REPORT: `${API_URL}/report/:id`,
+    DELETE_REPORT: `${API_URL}/report/delete/:id`,
+    UPDATE_REPORT: `${API_URL}/report/update`,
     EMAIL_VERIFICATION: `${API_URL}/user/verify/:id/:token`,
     SEND_EMAIL_AGAIN: `${API_URL}/user/send-email-again/:id/:token`,
 };
@@ -24,4 +26,5 @@ export const APP_ROUTES = {
     EMPLOYEES: '/employees',
     CALENDAR: '/calendar',
     VERIFICATION: '/verification/:id/:token',
+    EDIT: '/edit/:id',
 };
