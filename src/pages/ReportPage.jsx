@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
@@ -18,8 +18,12 @@ import {
 
 import { BiErrorCircle } from 'react-icons/bi';
 
+import Box from '@mui/material/Box';
+import { CircularProgress, Grow } from '@mui/material';
+import CustomButton from '../components/styled-components/CustomButton.jsx';
 import { ReportContext } from '../contexts/ReportContext';
 import dateAndTimeFormatter from '../utils/dateAndTimeFormatter';
+import { APP_ROUTES } from '../utils/constants';
 
 const showSkyStatusIcon = (value) => {
     if (value === 'rain') return <BsCloudRainHeavyFill />;
@@ -34,16 +38,30 @@ const showSkyStatusIcon = (value) => {
 
 const ReportPage = () => {
     const { reportId } = useParams();
-    const { getReportById } = useContext(ReportContext);
+    const navigate = useNavigate();
+    const { getReportById, deleteReport } = useContext(ReportContext);
     const [report, setReport] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const fetchReport = async () => {
-            const { content } = await getReportById(reportId);
-            setReport(content);
+            setIsLoading(true);
+            const fetchAnswer = await getReportById(reportId);
+            if (!fetchAnswer.status) navigate(APP_ROUTES.ERROR);
+            setReport(fetchAnswer.content);
+            setIsLoading(false);
         };
         fetchReport();
     }, []);
+
+    if (isLoading)
+        return (
+            <>
+                <Grow in={isLoading} easing="ease-out" timeout={2000} appear={true}>
+                    <CircularProgress sx={{ color: 'secondary.dark' }} size="52px" />
+                </Grow>
+            </>
+        );
 
     return (
         <>
@@ -52,8 +70,8 @@ const ReportPage = () => {
                     maxWidth="xl"
                     sx={{
                         display: 'flex',
-                        justifyContent: 'center',
-                        height: '70vh',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
                         p: 2,
                         minWidth: '80vw',
                     }}
@@ -178,19 +196,45 @@ const ReportPage = () => {
                             </Grid>
                         </Grid>
                         <Typography
+                            xl={3}
                             variant="body1"
                             sx={{
-                                maxHeight: '450px',
+                                maxHeight: '400px',
                                 overflow: 'hidden',
                                 overflowY: 'auto',
                                 py: 1,
                                 px: 3,
                                 whiteSpace: 'pre-wrap',
+                                overflowWrap: 'anywhere',
                             }}
                         >
                             {report.content}
                         </Typography>
                     </Stack>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: 'flex-end',
+                            gap: 3,
+                        }}
+                    >
+                        <CustomButton
+                            variant="contained"
+                            onClick={() => {
+                                navigate(APP_ROUTES.EDIT.replace(':id', report._id));
+                            }}
+                        >
+                            Edit
+                        </CustomButton>
+                        <CustomButton
+                            variant="contained"
+                            onClick={async () => {
+                                deleteReport(report._id);
+                            }}
+                        >
+                            Delete
+                        </CustomButton>
+                    </Box>
                 </Container>
             </Paper>
         </>

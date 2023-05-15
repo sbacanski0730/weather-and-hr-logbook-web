@@ -28,7 +28,6 @@ const ReportsListPage = () => {
         if (value === 'rain') return <BsCloudRainHeavyFill />;
         if (value === 'sun') return <BsFillSunFill />;
         if (value === 'wind') return <BsWind />;
-
         if (value === 'snow') return <BsFillCloudSnowFill />;
         if (value === 'heavy-clouds') return <BsFillCloudsFill />;
         if (value === 'clouds') return <BsFillCloudFill />;
@@ -104,10 +103,10 @@ const ReportsListPage = () => {
                                 <Table stickyHeader>
                                     <TableHead sx={{ border: '2px dotted orange', backgroundColor: 'red' }}>
                                         <TableRow>
-                                            {columns.map((column) => (
+                                            {columns.map((column, index) => (
                                                 <>
                                                     <TableCell
-                                                        key={column.label}
+                                                        key={index}
                                                         align="center"
                                                         sx={{
                                                             backgroundColor: 'primary.dark',
@@ -121,8 +120,8 @@ const ReportsListPage = () => {
                                     </TableHead>
 
                                     <TableBody>
-                                        {rows.map((row) => (
-                                            <TableRow key={row.id}>
+                                        {rows.map((row, index) => (
+                                            <TableRow key={index}>
                                                 <TableCell sx={{ maxWidth: '300px' }} align="center">
                                                     {row.date.substring(0, 10)}
                                                 </TableCell>

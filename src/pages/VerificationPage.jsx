@@ -29,11 +29,6 @@ const VerificationPage = () => {
     };
 
     useEffect(() => {
-        // console.log('userId: ', userId);
-        // console.log('token: ', token);
-
-        // console.log(API_ROUTES.EMAIL_VERIFICATION.replace(':id', userId).replace(':token', token));
-
         const verifyEmail = async () => {
             if (!isVerified) {
                 setIsLoading(true);
@@ -55,57 +50,52 @@ const VerificationPage = () => {
         verifyEmail();
     }, []);
 
+    if (isLoading)
+        return (
+            <>
+                <Grow in={isLoading} easing="ease-out" timeout={2000} appear={true}>
+                    <CircularProgress sx={{ color: 'secondary.dark' }} size="52px" />
+                </Grow>
+            </>
+        );
+
     return (
         <>
-            {isLoading ? (
-                <>
-                    <Grow in={isLoading} easing="ease-out" timeout={2000} appear={true}>
-                        <CircularProgress sx={{ color: 'secondary.dark' }} size="52px" />
-                    </Grow>
-                </>
-            ) : (
-                <>
-                    <Container
-                        maxWidth="sm"
-                        sx={{
-                            display: 'flex',
-                            flexDirection: 'column',
+            <Container
+                maxWidth="sm"
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
 
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            fontSize: '28px',
-                        }}
-                    >
-                        {isVerified ? (
-                            <>
-                                <p>Email Verified Successfully!!</p>
-                                <CustomButton
-                                    variant="contained"
-                                    sx={{ width: '100%' }}
-                                    onClick={() => navigate(APP_ROUTES.LOGIN)}
-                                >
-                                    Login
-                                </CustomButton>
-                            </>
-                        ) : (
-                            <>
-                                <p>Problem With Verification</p>
-                                <CustomButton
-                                    variant="contained"
-                                    sx={{ width: '100%' }}
-                                    onClick={() => sendEmailAgain()}
-                                >
-                                    Send Email Again
-                                </CustomButton>
-                            </>
-                        )}
-                    </Container>
-                    {info && (
-                        <Typography variant="subtitle1" sx={{ fontWeight: '600', fontSize: '20px', color: 'green' }}>
-                            {info}
-                        </Typography>
-                    )}
-                </>
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    fontSize: '28px',
+                }}
+            >
+                {isVerified ? (
+                    <>
+                        <p>Email Verified Successfully!!</p>
+                        <CustomButton
+                            variant="contained"
+                            sx={{ width: '100%' }}
+                            onClick={() => navigate(APP_ROUTES.LOGIN)}
+                        >
+                            Login
+                        </CustomButton>
+                    </>
+                ) : (
+                    <>
+                        <p>Problem With Verification</p>
+                        <CustomButton variant="contained" sx={{ width: '100%' }} onClick={() => sendEmailAgain()}>
+                            Send Email Again
+                        </CustomButton>
+                    </>
+                )}
+            </Container>
+            {info && (
+                <Typography variant="subtitle1" sx={{ fontWeight: '600', fontSize: '20px', color: 'green' }}>
+                    {info}
+                </Typography>
             )}
         </>
     );
