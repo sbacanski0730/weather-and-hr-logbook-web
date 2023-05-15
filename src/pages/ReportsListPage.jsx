@@ -28,7 +28,6 @@ const ReportsListPage = () => {
         if (value === 'rain') return <BsCloudRainHeavyFill />;
         if (value === 'sun') return <BsFillSunFill />;
         if (value === 'wind') return <BsWind />;
-
         if (value === 'snow') return <BsFillCloudSnowFill />;
         if (value === 'heavy-clouds') return <BsFillCloudsFill />;
         if (value === 'clouds') return <BsFillCloudFill />;

@@ -29,7 +29,6 @@ import CustomDatePicker from '../components/styled-components/CustomDatePicker.j
 import CustomButton from '../components/styled-components/CustomButton.jsx';
 import CustomTitleTextField from '../components/styled-components/CustomTitleTextField.jsx';
 import CustomTextField from '../components/styled-components/CustomTextField.jsx';
-import reportValidation from '../utils/reportValidation';
 import { API_ROUTES } from '../utils/constants';
 
 const EditPage = () => {
@@ -86,14 +85,7 @@ const EditPage = () => {
         };
         getReportToEdit(reportId);
         setIsLoading(false);
-
-        // console.log('dayjs format: ', dayjs(editingReport.date).format('HH:mm'));
-        // console.log('dayjs format: ', dayjs(editingReport.date).format('HH:mm'));
     }, []);
-
-    useEffect(() => {
-        console.log('from useEfext: ', editingReport.date);
-    }, [editingReport.date]);
 
     if (isLoading)
         return (
@@ -180,8 +172,6 @@ const EditPage = () => {
                                                 fullWidth
                                                 error={true}
                                                 format="YYYY-MM-DD"
-                                                // value={editingReport.date}
-                                                // defaultValue={editingReport.date.slice(0, 10)}
                                                 value={dayjs(editingReport.date)}
                                                 slotProps={{
                                                     textField: {
@@ -196,7 +186,6 @@ const EditPage = () => {
                                                         ...editingReport,
                                                         date: dayjs(e).format('YYYY-MM-DDTHH:mm'),
                                                     });
-                                                    // console.log(dayjs(e).format('YYYY-MM-DDTHH:mm'));
                                                 }}
                                             />
                                         </LocalizationProvider>
@@ -208,7 +197,6 @@ const EditPage = () => {
                                                 // format="HH:mm"
 
                                                 value={dayjs(editingReport.date)}
-                                                // value={dayjs(editingReport.date).format('HH:mm')}
                                                 slotProps={{
                                                     textField: {
                                                         variant: 'outlined',
@@ -221,7 +209,6 @@ const EditPage = () => {
                                                         ...editingReport,
                                                         date: dayjs(e).format('YYYY-MM-DDTHH:mm'),
                                                     });
-                                                    // console.log(dayjs(e).format('YYYY-MM-DDTHH:mm'));
                                                 }}
                                             />
                                         </LocalizationProvider>
