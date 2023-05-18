@@ -1,17 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link as ReactLink } from 'react-router-dom';
 
-import {
-    styled,
-    Container,
-    Paper,
-    TextField,
-    Box,
-    Typography,
-    Button,
-    Grid,
-    Link,
-} from '@mui/material';
+import { styled, Container, Paper, TextField, Box, Typography, Button, Grid, Link } from '@mui/material';
 import { APP_ROUTES, API_ROUTES } from '../utils/constants';
 
 import { authenticateUserToken, isValidateLogin } from '../utils/authFunction';
@@ -53,7 +43,7 @@ const LoginPage = () => {
             const { verify } = await authenticateUserToken();
 
             if (verify) {
-                navigate('/');
+                navigate(APP_ROUTES.HOME);
             } else {
                 localStorage.removeItem('token');
             }

@@ -24,6 +24,7 @@ import CustomButton from '../components/styled-components/CustomButton.jsx';
 import { ReportContext } from '../contexts/ReportContext';
 import dateAndTimeFormatter from '../utils/dateAndTimeFormatter';
 import { APP_ROUTES } from '../utils/constants';
+import DeleteReportPopup from '../components/DeleteReportPopup.jsx';
 
 const showSkyStatusIcon = (value) => {
     if (value === 'rain') return <BsCloudRainHeavyFill />;
@@ -42,6 +43,12 @@ const ReportPage = () => {
     const { getReportById, deleteReport } = useContext(ReportContext);
     const [report, setReport] = useState({});
     const [isLoading, setIsLoading] = useState(false);
+    const [popupTrigger, setPopupTrigger] = useState(false);
+
+    const handleDelete = async () => {
+        const { status } = await deleteReport(report._id);
+        if (status) navigate(APP_ROUTES.REPORTS);
+    };
 
     useEffect(() => {
         const fetchReport = async () => {
@@ -228,8 +235,9 @@ const ReportPage = () => {
                         </CustomButton>
                         <CustomButton
                             variant="contained"
-                            onClick={async () => {
-                                deleteReport(report._id);
+                            onClick={() => {
+                                // deleteReport(report._id);
+                                setPopupTrigger(true);
                             }}
                         >
                             Delete
@@ -237,6 +245,7 @@ const ReportPage = () => {
                     </Box>
                 </Container>
             </Paper>
+            <DeleteReportPopup trigger={popupTrigger} setTrigger={setPopupTrigger} handleDelete={handleDelete} />
         </>
     );
 };

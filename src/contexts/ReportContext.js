@@ -25,8 +25,8 @@ export const ReportContextProvider = ({ children }) => {
     };
 
     const addReport = async (report) => {
-        console.log('report UI: ', report);
-        const response = await fetch('http://localhost:5014/report/add', {
+        // console.log('report UI: ', report);
+        const response = await fetch(API_ROUTES.ADD_REPORT, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,6 +46,7 @@ export const ReportContextProvider = ({ children }) => {
                 content: report.content,
             }),
         }).then((res) => res.json());
+        console.log('token from localStore: ', localStorage.getItem('token'));
         console.log(response);
         return { status: response.status, message: response.message };
     };

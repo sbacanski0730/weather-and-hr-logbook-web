@@ -104,17 +104,15 @@ const ReportsListPage = () => {
                                     <TableHead sx={{ border: '2px dotted orange', backgroundColor: 'red' }}>
                                         <TableRow>
                                             {columns.map((column, index) => (
-                                                <>
-                                                    <TableCell
-                                                        key={index}
-                                                        align="center"
-                                                        sx={{
-                                                            backgroundColor: 'primary.dark',
-                                                        }}
-                                                    >
-                                                        {column.label}
-                                                    </TableCell>
-                                                </>
+                                                <TableCell
+                                                    key={index}
+                                                    align="center"
+                                                    sx={{
+                                                        backgroundColor: 'primary.dark',
+                                                    }}
+                                                >
+                                                    {column.label}
+                                                </TableCell>
                                             ))}
                                         </TableRow>
                                     </TableHead>
