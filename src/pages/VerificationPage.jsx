@@ -47,6 +47,7 @@ const VerificationPage = () => {
                 }
             }
         };
+
         verifyEmail();
     }, []);
 

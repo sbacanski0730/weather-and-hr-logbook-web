@@ -1,17 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link as ReactLink } from 'react-router-dom';
 
-import {
-    styled,
-    Container,
-    Grid,
-    Box,
-    Paper,
-    TextField,
-    Button,
-    Typography,
-    Link,
-} from '@mui/material';
+import { styled, Container, Grid, Box, Paper, TextField, Button, Typography, Link } from '@mui/material';
 
 import { API_ROUTES } from '../utils/constants';
 import { authenticateUserToken, isValidateRegister } from '../utils/authFunction';
@@ -66,6 +56,13 @@ const RegisterPage = () => {
     // TODO: move this function to auth context
     const handleRegister = async () => {
         try {
+            if ((email || password || repeatedPassword) === '') {
+                // console.log(email);
+                // console.log(password);
+                // console.log(repeatedPassword);
+                throw Error('Wrong Credentials');
+            }
+
             if (isValidateRegister(email, password, repeatedPassword)) {
                 const { status, message } = await fetch(API_ROUTES.REGISTER, {
                     method: 'POST',
@@ -95,7 +92,11 @@ const RegisterPage = () => {
                 }, 5000);
             }
         } catch (err) {
-            setInfoContent(err);
+            console.log(err.message);
+            setInfoContent(err.message);
+            // console.log(email);
+            // console.log(password);
+            // console.log(repeatedPassword);
             setTimeout(() => {
                 setInfoContent('');
             }, 5000);
@@ -145,6 +146,7 @@ const RegisterPage = () => {
                                 margin="normal"
                                 label="Email Address"
                                 type="text"
+                                value={email}
                                 onChange={(e) => {
                                     setEmail(e.target.value);
                                 }}
@@ -155,6 +157,7 @@ const RegisterPage = () => {
                                 margin="normal"
                                 label="Password"
                                 type="password"
+                                value={password}
                                 onChange={(e) => {
                                     setPassword(e.target.value);
                                 }}
@@ -165,23 +168,25 @@ const RegisterPage = () => {
                                 margin="normal"
                                 label="Repeat Password"
                                 type="password"
+                                value={repeatedPassword}
                                 onChange={(e) => {
                                     setRepeatedPassword(e.target.value);
                                 }}
                             />
-                            {infoContent && (
-                                <Typography
-                                    variant="subtitle2"
-                                    sx={{
-                                        m: 0,
-                                        px: 1,
-                                        color: `${infoColor}`,
-                                        boxShadow: 'none',
-                                    }}
-                                >
-                                    {infoContent}
-                                </Typography>
-                            )}
+                            {/* {infoContent && ( */}
+                            <Typography
+                                variant="subtitle2"
+                                sx={{
+                                    m: 0,
+                                    px: 1,
+                                    color: `${infoColor}`,
+                                    boxShadow: 'none',
+                                }}
+                            >
+                                {infoContent}
+                                {/* Something */}
+                            </Typography>
+                            {/* )} */}
                             <Button
                                 variant="contained"
                                 fullWidth

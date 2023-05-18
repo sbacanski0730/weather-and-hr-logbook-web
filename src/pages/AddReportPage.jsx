@@ -62,6 +62,7 @@ const AddReport = () => {
 
     const handleAddReport = async () => {
         console.log('report dawany do conteksu: ', report);
+
         try {
             reportValidation(report);
             const response = await addReport(report);
@@ -245,8 +246,8 @@ const AddReport = () => {
                                                     value: 'clouds',
                                                     icon: <BsFillCloudFill />,
                                                 },
-                                            ].map((option) => (
-                                                <MenuItem key={option.value} value={option.value}>
+                                            ].map((option, index) => (
+                                                <MenuItem key={index} value={option.value}>
                                                     {option.icon}
                                                 </MenuItem>
                                             ))}

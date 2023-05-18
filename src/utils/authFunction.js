@@ -11,20 +11,25 @@ export function getTokenFromLocalStorage() {
 export async function authenticateUserToken() {
     const defaultReturnObject = { verify: false, user: null };
 
-    const token = getTokenFromLocalStorage();
+    const token = localStorage.getItem('token');
 
     if (!token) {
         return defaultReturnObject;
     }
 
-    const { content } = await fetch(API_ROUTES.GET_USER, {
+    const response = await fetch(API_ROUTES.GET_USER, {
         method: 'GET',
         headers: {
-            token: getTokenFromLocalStorage(),
+            token: localStorage.getItem('token'),
         },
     }).then((res) => res.json());
 
-    return { verify: true, user: content.email };
+    if (!response.status) {
+        localStorage.removeItem('token');
+        return { verify: false };
+    }
+
+    return { verify: true };
 }
 
 export function isValidateLogin(email, password) {
