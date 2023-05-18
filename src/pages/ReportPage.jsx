@@ -24,7 +24,9 @@ import CustomButton from '../components/styled-components/CustomButton.jsx';
 import { ReportContext } from '../contexts/ReportContext';
 import dateAndTimeFormatter from '../utils/dateAndTimeFormatter';
 import { APP_ROUTES } from '../utils/constants';
+
 import DeleteReportPopup from '../components/DeleteReportPopup.jsx';
+
 
 const showSkyStatusIcon = (value) => {
     if (value === 'rain') return <BsCloudRainHeavyFill />;
@@ -235,8 +237,8 @@ const ReportPage = () => {
                         </CustomButton>
                         <CustomButton
                             variant="contained"
+
                             onClick={() => {
-                                // deleteReport(report._id);
                                 setPopupTrigger(true);
                             }}
                         >
