@@ -26,7 +26,6 @@ export const ReportContextProvider = ({ children }) => {
     };
 
     const addReport = async (report) => {
-        // console.log('report UI: ', report);
         const response = await fetch(API_ROUTES.ADD_REPORT, {
             method: 'POST',
             headers: {
