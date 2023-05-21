@@ -6,6 +6,7 @@ export const ReportContext = createContext();
 
 export const ReportContextProvider = ({ children }) => {
     const [userReports, setUserReports] = useState([]);
+    const [userEmployees, setUserEmployees] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     const fetchReports = async () => {
@@ -63,8 +64,6 @@ export const ReportContextProvider = ({ children }) => {
     };
 
     const deleteReport = async (reportId) => {
-        console.log('usuwam:', API_ROUTES.DELETE_REPORT.replace(':id', reportId));
-
         const response = await fetch(API_ROUTES.DELETE_REPORT.replace(':id', reportId), {
             method: 'delete',
             headers: { token: localStorage.getItem('token') },
@@ -84,10 +83,53 @@ export const ReportContextProvider = ({ children }) => {
         return response;
     };
 
+    const fetchEmployees = async () => {
+        const { content } = await fetch(API_ROUTES.EMPLOYEES, {
+            headers: {
+                token: localStorage.getItem('token'),
+            },
+        }).then((res) => res.json());
+        setUserEmployees(content);
+    };
+
+    const deleteEmployee = async (employeeId) => {
+        const response = await fetch(API_ROUTES.DELETE_EMPLOYEE.replace(':id', employeeId), {
+            method: 'delete',
+            headers: {
+                token: localStorage.getItem('token'),
+            },
+        });
+        return response;
+    };
+
+    const addEmployee = async (body) => {
+        const response = await fetch(API_ROUTES.ADD_EMPLOYEE, {
+            method: 'post',
+            headers: {
+                'content-type': 'application/json',
+                token: localStorage.getItem('token'),
+            },
+            body: JSON.stringify(body),
+        }).then((res) => res.json());
+        return response;
+    };
+
     return (
         <>
             <ReportContext.Provider
-                value={{ userReports, fetchReports, isLoading, addReport, getReportById, deleteReport, updateReport }}
+                value={{
+                    userReports,
+                    fetchReports,
+                    isLoading,
+                    addReport,
+                    getReportById,
+                    deleteReport,
+                    updateReport,
+                    fetchEmployees,
+                    userEmployees,
+                    deleteEmployee,
+                    addEmployee,
+                }}
             >
                 {children}
             </ReportContext.Provider>

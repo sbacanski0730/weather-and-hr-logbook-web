@@ -18,6 +18,7 @@ import AddIcon from '@mui/icons-material/Add';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PersonIcon from '@mui/icons-material/Person';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
 import DarkModeSharpIcon from '@mui/icons-material/DarkModeSharp';
 import LightModeIcon from '@mui/icons-material/LightMode';
@@ -126,18 +127,18 @@ const UserInterface = () => {
                     },
                 }}
             >
-                <Box sx={{ width: '240px' }}>
+                <Box>
                     <List>
                         {[
                             {
                                 name: 'Reports',
                                 icon: <FolderIcon sx={{ fontSize: '30px' }} />,
-                                path: '/reports',
+                                path: APP_ROUTES.REPORTS,
                             },
                             {
                                 name: 'Add Report',
                                 icon: <AddIcon sx={{ fontSize: '30px' }} />,
-                                path: '/add-report',
+                                path: APP_ROUTES.ADD_REPORT,
                             },
                             {
                                 name: 'Calendar',
@@ -147,7 +148,12 @@ const UserInterface = () => {
                             {
                                 name: 'Employees',
                                 icon: <PersonIcon sx={{ fontSize: '30px' }} />,
-                                path: '/employees',
+                                path: APP_ROUTES.EMPLOYEES,
+                            },
+                            {
+                                name: 'Add Employee',
+                                icon: <GroupAddIcon sx={{ fontSize: '30px' }} />,
+                                path: APP_ROUTES.ADD_EMPLOYEE,
                             },
                             {
                                 name: 'Project info',
@@ -163,12 +169,7 @@ const UserInterface = () => {
                                             setIsOpen(false);
                                         }}
                                     >
-                                        <Link
-                                            to={path}
-                                            component={ReactLink}
-                                            underline="none"
-                                            sx={{ display: 'flex' }}
-                                        >
+                                        <Link to={path} component={ReactLink} underline="none" sx={{ display: 'flex' }}>
                                             <ListItemIcon
                                                 sx={{
                                                     display: 'flex',
