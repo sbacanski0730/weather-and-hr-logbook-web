@@ -16,6 +16,7 @@ const Popup = (props) =>
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
+                zIndex: 99,
             }}
         >
             {props.children}

@@ -4,14 +4,17 @@ const API_URL = 'http://localhost:5014';
 export const API_ROUTES = {
     LOGIN: `${API_URL}/auth/login`,
     REGISTER: `${API_URL}/auth/register`,
-    REPORTS: `${API_URL}/user/get-all-reports`,
     GET_USER: `${API_URL}/user/get-user`,
+    EMAIL_VERIFICATION: `${API_URL}/user/verify/:id/:token`,
+    SEND_EMAIL_AGAIN: `${API_URL}/user/send-email-again/:id/:token`,
+    REPORTS: `${API_URL}/user/get-all-reports`,
     ADD_REPORT: `${API_URL}/report/add`,
     GET_REPORT: `${API_URL}/report/:id`,
     DELETE_REPORT: `${API_URL}/report/delete/:id`,
     UPDATE_REPORT: `${API_URL}/report/update`,
-    EMAIL_VERIFICATION: `${API_URL}/user/verify/:id/:token`,
-    SEND_EMAIL_AGAIN: `${API_URL}/user/send-email-again/:id/:token`,
+    ADD_EMPLOYEE: `${API_URL}/user/add-employee`,
+    EMPLOYEES: `${API_URL}/user/employees`,
+    DELETE_EMPLOYEE: `${API_URL}/user/delete-employee/:id`,
 };
 
 export const APP_ROUTES = {
@@ -25,6 +28,7 @@ export const APP_ROUTES = {
     REPORTS: '/reports',
     ADD_REPORT: '/add-report',
     EMPLOYEES: '/employees',
+    ADD_EMPLOYEE: '/add-employee',
     CALENDAR: '/calendar',
     VERIFICATION: '/verification/:id/:token',
     EDIT: '/edit/:id',
