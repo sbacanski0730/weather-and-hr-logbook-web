@@ -1,8 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Container, Paper, Typography } from '@mui/material';
 import { ReportContext } from '../contexts/ReportContext';
 import CustomTextField from '../components/styled-components/CustomTextField.jsx';
 import CustomButton from '../components/styled-components/CustomButton.jsx';
+import { APP_ROUTES } from '../utils/constants';
 
 const AddEmployeePage = () => {
     const { addEmployee } = useContext(ReportContext);
@@ -11,6 +13,14 @@ const AddEmployeePage = () => {
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [position, setPosition] = useState('');
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!localStorage.getItem('token')) {
+            navigate(APP_ROUTES.LOGIN);
+        }
+    });
 
     const validateInputsValues = () => {
         if (!name) throw new Error('You need to set name!');

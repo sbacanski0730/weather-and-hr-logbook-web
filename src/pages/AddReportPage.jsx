@@ -1,10 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import MenuItem from '@mui/material/MenuItem';
+import { useNavigate } from 'react-router-dom';
 
 import InputAdornment from '@mui/material/InputAdornment';
 
@@ -29,11 +30,13 @@ import CustomButton from '../components/styled-components/CustomButton.jsx';
 import CustomTitleTextField from '../components/styled-components/CustomTitleTextField.jsx';
 import CustomTextField from '../components/styled-components/CustomTextField.jsx';
 import reportValidation from '../utils/reportValidation';
+import { APP_ROUTES } from '../utils/constants';
 
 const AddReport = () => {
     const { addReport } = useContext(ReportContext);
     const [info, setInfo] = useState('');
     const [infoColor, setInfoColor] = useState('green');
+
     const [report, setReport] = useState({
         title: '',
         date: new Date().toJSON().slice(0, 10),
@@ -58,6 +61,14 @@ const AddReport = () => {
         wind_speed_error: false,
         ship_localization_error: false,
         content_error: false,
+    });
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!localStorage.getItem('token')) {
+            navigate(APP_ROUTES.LOGIN);
+        }
     });
 
     const handleAddReport = async () => {

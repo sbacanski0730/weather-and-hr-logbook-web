@@ -22,6 +22,12 @@ import { ReportContext } from '../contexts/ReportContext';
 const ReportsListPage = () => {
     const navigate = useNavigate();
 
+    useEffect(() => {
+        if (!localStorage.getItem('token')) {
+            navigate(APP_ROUTES.LOGIN);
+        }
+    });
+
     const { fetchReports, userReports, isLoading } = useContext(ReportContext);
 
     const showSkyStatusIcon = (value) => {

@@ -29,7 +29,6 @@ export const APP_ROUTES = {
     ADD_REPORT: '/add-report',
     EMPLOYEES: '/employees',
     ADD_EMPLOYEE: '/add-employee',
-    CALENDAR: '/calendar',
     VERIFICATION: '/verification/:id/:token',
     EDIT: '/edit/:id',
 };

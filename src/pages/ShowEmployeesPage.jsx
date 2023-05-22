@@ -13,6 +13,12 @@ const ShowEmployeesPage = () => {
     const [reportIdToDelete, setReportIdToDelete] = useState('');
 
     useEffect(() => {
+        if (!localStorage.getItem('token')) {
+            navigate(APP_ROUTES.LOGIN);
+        }
+    });
+
+    useEffect(() => {
         fetchEmployees();
     }, []);
 

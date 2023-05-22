@@ -29,7 +29,7 @@ import CustomDatePicker from '../components/styled-components/CustomDatePicker.j
 import CustomButton from '../components/styled-components/CustomButton.jsx';
 import CustomTitleTextField from '../components/styled-components/CustomTitleTextField.jsx';
 import CustomTextField from '../components/styled-components/CustomTextField.jsx';
-import { API_ROUTES } from '../utils/constants';
+import { API_ROUTES, APP_ROUTES } from '../utils/constants';
 
 const EditPage = () => {
     const { id: reportId } = useParams();
@@ -75,6 +75,12 @@ const EditPage = () => {
             setTimeout(() => setInfo(''), 5000);
         }
     };
+
+    useEffect(() => {
+        if (!localStorage.getItem('token')) {
+            navigate(APP_ROUTES.LOGIN);
+        }
+    });
 
     useEffect(() => {
         setIsLoading(true);

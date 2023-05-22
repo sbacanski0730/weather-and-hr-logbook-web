@@ -27,7 +27,6 @@ import { APP_ROUTES } from '../utils/constants';
 
 import DeleteReportPopup from '../components/DeleteReportPopup.jsx';
 
-
 const showSkyStatusIcon = (value) => {
     if (value === 'rain') return <BsCloudRainHeavyFill />;
     if (value === 'sun') return <BsFillSunFill />;
@@ -51,6 +50,12 @@ const ReportPage = () => {
         const { status } = await deleteReport(report._id);
         if (status) navigate(APP_ROUTES.REPORTS);
     };
+
+    useEffect(() => {
+        if (!localStorage.getItem('token')) {
+            navigate(APP_ROUTES.LOGIN);
+        }
+    });
 
     useEffect(() => {
         const fetchReport = async () => {
@@ -237,7 +242,6 @@ const ReportPage = () => {
                         </CustomButton>
                         <CustomButton
                             variant="contained"
-
                             onClick={() => {
                                 setPopupTrigger(true);
                             }}
