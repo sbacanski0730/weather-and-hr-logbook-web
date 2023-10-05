@@ -86,15 +86,6 @@ const UserInterface = () => {
                         <CustomTopbarIconButton onClick={toggleTheme}>
                             {themeMode === 'dark' ? <LightModeIcon /> : <DarkModeSharpIcon />}
                         </CustomTopbarIconButton>
-                        <CustomTopbarIconButton>
-                            {notification > 0 ? (
-                                <Badge max={10} badgeContent={notification} color="info">
-                                    <NotificationsActiveIcon />
-                                </Badge>
-                            ) : (
-                                <NotificationsIcon />
-                            )}
-                        </CustomTopbarIconButton>
 
                         <CustomTopbarButton
                             variant="outlined"
@@ -139,11 +130,6 @@ const UserInterface = () => {
                                 name: 'Add Report',
                                 icon: <AddIcon sx={{ fontSize: '30px' }} />,
                                 path: APP_ROUTES.ADD_REPORT,
-                            },
-                            {
-                                name: 'Calendar',
-                                icon: <CalendarMonthIcon sx={{ fontSize: '30px' }} />,
-                                path: '/calendar',
                             },
                             {
                                 name: 'Employees',

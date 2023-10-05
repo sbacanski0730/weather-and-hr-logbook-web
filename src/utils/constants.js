@@ -4,6 +4,8 @@ const API_URL = 'http://localhost:5014';
 export const API_ROUTES = {
     LOGIN: `${API_URL}/auth/login`,
     REGISTER: `${API_URL}/auth/register`,
+    PASSWORD_RESET: `${API_URL}/auth/send-email-to-password-reset`,
+    NEW_PASSWORD: `${API_URL}/auth/set-new-password`,
     GET_USER: `${API_URL}/user/get-user`,
     EMAIL_VERIFICATION: `${API_URL}/user/verify/:id/:token`,
     SEND_EMAIL_AGAIN: `${API_URL}/user/send-email-again/:id/:token`,
@@ -31,4 +33,6 @@ export const APP_ROUTES = {
     ADD_EMPLOYEE: '/add-employee',
     VERIFICATION: '/verification/:id/:token',
     EDIT: '/edit/:id',
+    RESET_PASSWORD: '/reset-password',
+    SET_NEW_PASSWORD: '/set-new-password/:id/:token',
 };

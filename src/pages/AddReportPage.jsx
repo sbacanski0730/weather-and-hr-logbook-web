@@ -31,6 +31,7 @@ import CustomTitleTextField from '../components/styled-components/CustomTitleTex
 import CustomTextField from '../components/styled-components/CustomTextField.jsx';
 import reportValidation from '../utils/reportValidation';
 import { APP_ROUTES } from '../utils/constants';
+import AddEmployeeList from '../components/styled-components/AddEmployeeList.jsx';
 
 const AddReport = () => {
     const { addReport } = useContext(ReportContext);
@@ -104,7 +105,7 @@ const AddReport = () => {
                         flex: 'display',
                         flexDirection: 'column',
                         p: 2,
-                        height: '70vh',
+                        // height: '70vh', <---
                     }}
                 >
                     <Stack
@@ -383,6 +384,7 @@ const AddReport = () => {
                                             }
                                         />
                                     </Box>
+                                    <AddEmployeeList report={report} setReport={setReport} />
                                 </Stack>
                             </Grid>
                             <Grid
@@ -409,7 +411,7 @@ const AddReport = () => {
                                         height: '100%',
                                         // border: 1,
                                         // backgroundColor: 'yellow',
-                                        // maxHeight: '580px',
+                                        minHeight: '200px',
                                         '& fieldset': {
                                             display: 'none',
                                         },

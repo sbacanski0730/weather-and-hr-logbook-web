@@ -20,6 +20,8 @@ import VerificationPage from './pages/VerificationPage.jsx';
 import EditPage from './pages/EditPage.jsx';
 import ShowEmployeesPage from './pages/ShowEmployeesPage.jsx';
 import AddEmployeePage from './pages/AddEmployeePage.jsx';
+import ResetPasswordPage from './pages/ResetPasswordPage.jsx';
+import SetNewPasswordPage from './pages/SetNewPasswordPage.jsx';
 
 const routing = createBrowserRouter(
     createRoutesFromElements(
@@ -30,6 +32,8 @@ const routing = createBrowserRouter(
                 <Route exact path={APP_ROUTES.INFO} element={<InfoPage />} />
                 <Route path={APP_ROUTES.ERROR} element={<Error404Page />} />
                 <Route exact path={APP_ROUTES.VERIFICATION} element={<VerificationPage />} />
+                <Route exact path={APP_ROUTES.RESET_PASSWORD} element={<ResetPasswordPage />} />
+                <Route exact path={APP_ROUTES.SET_NEW_PASSWORD} element={<SetNewPasswordPage />} />
             </Route>
             <Route element={<MainLayout />}>
                 <Route exact path={APP_ROUTES.HOME} element={<HomePage />} />

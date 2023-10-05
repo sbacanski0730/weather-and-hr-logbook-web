@@ -181,7 +181,7 @@ const LoginPage = () => {
                                 <Grid item xs>
                                     <Link
                                         component={ReactLink}
-                                        to="/"
+                                        to={APP_ROUTES.RESET_PASSWORD}
                                         variant="h5"
                                         underline="hover"
                                         color="authLinkColor.main"
