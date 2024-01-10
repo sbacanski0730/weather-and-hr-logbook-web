@@ -65,7 +65,6 @@ const LoginPage = () => {
                         password,
                     }),
                 });
-
                 if (!response.ok) {
                     const { message } = await response.json();
                     setInfoContent(message);
@@ -89,7 +88,7 @@ const LoginPage = () => {
                 }
             }
         } catch (err) {
-            setInfoContent(err);
+            setInfoContent(err.message);
             setTimeout(() => {
                 setInfoContent('');
             }, 5000);

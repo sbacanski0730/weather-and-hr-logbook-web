@@ -30,14 +30,16 @@ import CustomColoredSidebarDrawer from '../styled-components/CustomColoredSideba
 import CustomSidebarListItem from '../styled-components/CustomSidebarListItem.jsx';
 import CustomTopbarIconButton from '../styled-components/CustomTopbarIconButton.jsx';
 import CustomTopbarButton from '../styled-components/CustomTopbarButton.jsx';
-import { ThemeContext } from '../../App';
+// import { ThemeContext } from '../../App';
+import ThemeContextNew from '../../contexts/ThemeContext.jsx';
 
 const UserInterface = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [notification] = useState(0);
     const navigate = useNavigate();
 
-    const { themeMode, toggleTheme } = useContext(ThemeContext);
+    // const { themeMode, toggleTheme } = useContext(ThemeContext);
+    const { themeMode, toggleTheme } = useContext(ThemeContextNew);
 
     const logout = () => {
         localStorage.removeItem('token');
@@ -180,6 +182,7 @@ const UserInterface = () => {
                                                 {icon}
                                             </ListItemIcon>
                                             <ListItemText
+                                                data-testid={name}
                                                 primary={name}
                                                 primaryTypographyProps={{
                                                     fontSize: '22px',
