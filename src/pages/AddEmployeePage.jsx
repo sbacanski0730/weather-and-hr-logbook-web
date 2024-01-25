@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Paper, Typography } from '@mui/material';
-import { ReportContext } from '../contexts/ReportContext';
+import { ReportContext } from '../contexts/ReportContext.jsx';
 import CustomTextField from '../components/styled-components/CustomTextField.jsx';
 import CustomButton from '../components/styled-components/CustomButton.jsx';
 import { APP_ROUTES } from '../utils/constants';

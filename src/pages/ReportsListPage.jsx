@@ -17,7 +17,7 @@ import { BiErrorCircle } from 'react-icons/bi';
 import { APP_ROUTES } from '../utils/constants';
 import ShowReportButton from '../components/ShowReportButton/ShowReportButton.jsx';
 import CustomButton from '../components/styled-components/CustomButton.jsx';
-import { ReportContext } from '../contexts/ReportContext';
+import { ReportContext } from '../contexts/ReportContext.jsx';
 
 const ReportsListPage = () => {
     const navigate = useNavigate();

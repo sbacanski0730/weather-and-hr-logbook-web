@@ -4,7 +4,7 @@ import Container from '@mui/material/Container';
 // import { useEffect, useState } from 'react';
 // import { ThemeProvider } from '@mui/material';
 import UserInterface from '../components/UserInterface/UserInterface.jsx';
-import { ReportContextProvider } from '../contexts/ReportContext';
+import { ReportContextProvider } from '../contexts/ReportContext.jsx';
 // import ThemeContext from '../contexts/ThemeContext.jsx';
 // import createProjectTheme from '../theme/createProjectTheme';
 

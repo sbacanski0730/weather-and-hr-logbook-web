@@ -21,7 +21,7 @@ import { BiErrorCircle } from 'react-icons/bi';
 import Box from '@mui/material/Box';
 import { CircularProgress, Grow } from '@mui/material';
 import CustomButton from '../components/styled-components/CustomButton.jsx';
-import { ReportContext } from '../contexts/ReportContext';
+import { ReportContext } from '../contexts/ReportContext.jsx';
 import dateAndTimeFormatter from '../utils/dateAndTimeFormatter';
 import { APP_ROUTES } from '../utils/constants';
 
