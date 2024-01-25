@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import renderer from 'react-test-renderer';
 import AuthInterface from '../../../components/AuthInterface/AuthInterface.jsx';
 import { ThemeProvider } from '../../../contexts/ThemeContext.jsx';
 
@@ -40,5 +41,19 @@ describe('AuthInterface component', () => {
         );
         const icon = screen.getByTestId('dark-mode-icon');
         expect(icon).toBeInTheDocument();
+    });
+
+    // ====================
+    it('Component snapshot test', async () => {
+        const component = renderer
+            .create(
+                <MemoryRouter initialEntries={[{ pathname: '/login' }]}>
+                    <ThemeProvider>
+                        <AuthInterface />
+                    </ThemeProvider>
+                </MemoryRouter>
+            )
+            .toJSON();
+        expect(component).toMatchSnapshot();
     });
 });

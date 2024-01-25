@@ -52,27 +52,14 @@ const routing = createBrowserRouter(
 // const getTheme = () => localStorage.getItem('theme');
 
 function App() {
-    // const [themeMode, setThemeMode] = useState(getTheme() || 'light');
-
-    // const toggleTheme = () => {
-    //     if (themeMode === 'light') setThemeMode('dark');
-    //     if (themeMode === 'dark') setThemeMode('light');
-    // };
-
-    // useEffect(() => {
-    //     localStorage.setItem('theme', themeMode);
-    // }, [themeMode]);
-
     const { themeMode } = useTheme();
 
     return (
         <>
-            {/* <ThemeContext.Provider value={{ themeMode, toggleTheme }}> */}
             <ThemeProvider theme={createProjectTheme(themeMode)}>
                 <CssBaseline />
                 <RouterProvider router={routing} />
             </ThemeProvider>
-            {/* </ThemeContext.Provider> */}
         </>
     );
 }
