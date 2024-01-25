@@ -22,7 +22,7 @@ import {
     BsFillCloudFill,
 } from 'react-icons/bs';
 import { TextField, Typography } from '@mui/material';
-import { ReportContext } from '../contexts/ReportContext';
+import { ReportContext } from '../contexts/ReportContext.jsx';
 
 import CustomTimePicker from '../components/styled-components/CustomTimePicker.jsx';
 import CustomDatePicker from '../components/styled-components/CustomDatePicker.jsx';

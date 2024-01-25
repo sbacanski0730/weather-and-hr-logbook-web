@@ -52,27 +52,27 @@ export function isValidateRegister(email, password, repeatedPassword) {
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (!email || !email.toLowerCase().match(emailRegex)) {
-        throw new Error('Valid email required!');
+        throw new Error('Valid email required');
     }
 
     if (email.length > 128) {
-        throw new Error('Email too long!');
+        throw new Error('Email too long');
     }
 
     if (!password) {
-        throw new Error('Password required!');
+        throw new Error('Password required');
     }
 
     if (password.length < 5) {
-        throw new Error('Password must be at least 5 characters long!');
+        throw new Error('Password must be at least 5 characters long');
     }
 
     if (password.length > 128) {
-        throw new Error('Password too long!');
+        throw new Error('Password too long');
     }
 
     if (!(password === repeatedPassword)) {
-        throw new Error('Passwords should be the same!');
+        throw new Error('Passwords should be the same');
     }
 
     return true;

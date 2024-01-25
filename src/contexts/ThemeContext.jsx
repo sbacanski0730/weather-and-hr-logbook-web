@@ -1,30 +1,41 @@
-import { useState, useMemo, createContext } from 'react';
-import createProjectTheme from '../theme/createProjectTheme';
+import { createContext, useContext, useEffect, useState } from 'react';
 
-// export const ThemeContext = createContext({
-// 	themeToggle: () => {},
-// });
+const ThemeContextNew = createContext();
 
-// export const useThemeMode = () => {
-// 	const [mode, setMode] = useState('light');
+// eslint-disable-next-line no-unused-vars, react/prop-types
+export const ThemeProvider = ({ children }) => {
+    const getTheme = () => localStorage.getItem('theme');
+    const [themeMode, setThemeMode] = useState(getTheme() || 'light');
 
-// 	const themeChange = useMemo(() => {
-// 		themeToggle: () => {
-// 			if (mode === 'light') setMode('dark');
-// 			if (mode === 'dark') setMode('light');
-// 		};
-// 	}, []);
+    const toggleTheme = () => {
+        if (themeMode === 'light') setThemeMode('dark');
+        if (themeMode === 'dark') setThemeMode('light');
+    };
 
-// 	const activeTheme = useMemo(() => createProjectTheme(mode), [mode]);
-// 	return [themeChange, activeTheme];
-// };
+    useEffect(() => {
+        const mode = localStorage.getItem('theme');
+        if (mode) {
+            if (mode.match(/light/i) || mode.match(/dark/i)) setThemeMode(mode.toLowerCase());
+        } else {
+            setThemeMode('light');
+        }
+    }, []);
 
-// export const ThemeContext = createContext();
+    useEffect(() => {
+        localStorage.setItem('theme', themeMode);
+    }, [themeMode]);
 
-// export const ThemeContextProvider = ({ children }) => {
-// 	return (
-// 		<>
-// 			<ThemeContext.Provider>{children}</ThemeContext.Provider>
-// 		</>
-// 	);
-// };
+    return (
+        <>
+            <ThemeContextNew.Provider value={{ themeMode, toggleTheme }}>{children}</ThemeContextNew.Provider>
+        </>
+    );
+};
+
+export default ThemeContextNew;
+
+export const useTheme = () => {
+    const theme = useContext(ThemeContextNew);
+    if (!theme) throw Error('useTheme need to be used inside ThemeContextNew');
+    return theme;
+};

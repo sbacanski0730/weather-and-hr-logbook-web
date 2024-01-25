@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthInterface component Component snapshot test 1`] = `
+<header
+  className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionFixed mui-fixed css-1ktv3l4-MuiPaper-root-MuiAppBar-root"
+>
+  <div
+    className="MuiStack-root css-w4z10b-MuiStack-root"
+  >
+    <button
+      className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-j6pqhf-MuiButtonBase-root-MuiIconButton-root"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+        data-testid="dark-mode-icon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"
+        />
+      </svg>
+    </button>
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-11pcvcz-MuiButtonBase-root-MuiButton-root"
+      disabled={false}
+      onBlur={[Function]}
+      onContextMenu={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <a
+        className="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineNone css-1pmsi6l-MuiTypography-root-MuiLink-root"
+        data-testid="custom-info-link"
+        href="/info"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+      >
+        <h5
+          className="MuiTypography-root MuiTypography-h5 css-ag7rrr-MuiTypography-root"
+        >
+          INFO
+        </h5>
+      </a>
+    </button>
+  </div>
+</header>
+`;

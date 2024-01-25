@@ -6,7 +6,8 @@ const CustomTopbarIconButton = styled(IconButton)(({ theme }) => ({
         color: theme.palette.text.primary,
     },
     '&:hover': {
-        backgroundColor: `${theme.palette.topbarHoverColor.main}`,
+        // backgroundColor: `${theme.palette.topbarHoverColor.main}`,
+        backgroundColor: theme.palette.topbarHoverColor,
     },
 }));
 

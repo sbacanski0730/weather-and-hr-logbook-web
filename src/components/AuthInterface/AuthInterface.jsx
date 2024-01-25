@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link as ReactLink, useLocation } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
@@ -7,16 +7,18 @@ import Link from '@mui/material/Link';
 
 import DarkModeSharpIcon from '@mui/icons-material/DarkModeSharp';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import { ThemeContext } from '../../App';
 
 import CustomTopbarIconButton from '../styled-components/CustomTopbarIconButton.jsx';
 import CustomTopbarButton from '../styled-components/CustomTopbarButton.jsx';
 
 import { APP_ROUTES } from '../../utils/constants';
 
+import { useTheme } from '../../contexts/ThemeContext.jsx';
+
 const AuthInterface = () => {
-    const { themeMode, toggleTheme } = useContext(ThemeContext);
+    // const { themeMode, toggleTheme } = useContext(ThemeContext);
     const { pathname } = useLocation();
+    const { themeMode, toggleTheme } = useTheme();
 
     return (
         <AppBar
@@ -40,7 +42,11 @@ const AuthInterface = () => {
                         py: '1px',
                     }}
                 >
-                    {themeMode === 'dark' ? <LightModeIcon /> : <DarkModeSharpIcon />}
+                    {themeMode === 'dark' ? (
+                        <LightModeIcon data-testid="light-mode-icon" />
+                    ) : (
+                        <DarkModeSharpIcon data-testid="dark-mode-icon" />
+                    )}
                 </CustomTopbarIconButton>
                 <CustomTopbarButton sx={{ my: '1px', mx: '2px' }}>
                     {pathname.includes('info') ? (
@@ -49,6 +55,7 @@ const AuthInterface = () => {
                             component={ReactLink}
                             sx={{ color: 'inherited' }}
                             underline="none"
+                            data-testid="custom-login-link"
                         >
                             <Typography variant="h5">LOGIN</Typography>
                         </Link>
@@ -58,6 +65,7 @@ const AuthInterface = () => {
                             component={ReactLink}
                             sx={{ color: 'inherited' }}
                             underline="none"
+                            data-testid="custom-info-link"
                         >
                             <Typography variant="h5">INFO</Typography>
                         </Link>

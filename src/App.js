@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
+// import { createContext, useState, useEffect } from 'react';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material';
@@ -20,6 +20,8 @@ import VerificationPage from './pages/VerificationPage.jsx';
 import EditPage from './pages/EditPage.jsx';
 import ShowEmployeesPage from './pages/ShowEmployeesPage.jsx';
 import AddEmployeePage from './pages/AddEmployeePage.jsx';
+
+import { useTheme } from './contexts/ThemeContext.jsx';
 
 const routing = createBrowserRouter(
     createRoutesFromElements(
@@ -45,30 +47,19 @@ const routing = createBrowserRouter(
     )
 );
 
-export const ThemeContext = createContext();
+// export const ThemeContext = createContext();
 
-const getTheme = () => localStorage.getItem('theme');
+// const getTheme = () => localStorage.getItem('theme');
 
 function App() {
-    const [themeMode, setThemeMode] = useState(getTheme() || 'light');
-
-    const toggleTheme = () => {
-        if (themeMode === 'light') setThemeMode('dark');
-        if (themeMode === 'dark') setThemeMode('light');
-    };
-
-    useEffect(() => {
-        localStorage.setItem('theme', themeMode);
-    }, [themeMode]);
+    const { themeMode } = useTheme();
 
     return (
         <>
-            <ThemeContext.Provider value={{ themeMode, toggleTheme }}>
-                <ThemeProvider theme={createProjectTheme(themeMode)}>
-                    <CssBaseline />
-                    <RouterProvider router={routing} />
-                </ThemeProvider>
-            </ThemeContext.Provider>
+            <ThemeProvider theme={createProjectTheme(themeMode)}>
+                <CssBaseline />
+                <RouterProvider router={routing} />
+            </ThemeProvider>
         </>
     );
 }

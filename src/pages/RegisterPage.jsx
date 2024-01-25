@@ -53,16 +53,11 @@ const RegisterPage = () => {
         authenticateForLoginPage();
     }, []);
 
-    // TODO: move this function to auth context
     const handleRegister = async () => {
         try {
-            if ((email || password || repeatedPassword) === '') {
-                // console.log(email);
-                // console.log(password);
-                // console.log(repeatedPassword);
+            if (email === '' || password === '' || repeatedPassword === '') {
                 throw Error('Wrong Credentials');
             }
-
             if (isValidateRegister(email, password, repeatedPassword)) {
                 const { status, message } = await fetch(API_ROUTES.REGISTER, {
                     method: 'POST',
@@ -75,28 +70,20 @@ const RegisterPage = () => {
                     }),
                 }).then((res) => res.json());
 
-                // status ? setInfoColor('#32c809') : setInfoColor('#d20404');
                 if (status) {
                     setInfoColor('#32c809');
                 } else {
                     setInfoColor('#d20404');
                 }
-
                 setInfoContent(message);
-
                 setPassword('');
                 setRepeatedPassword('');
-
                 setTimeout(() => {
                     setInfoContent('');
                 }, 5000);
             }
         } catch (err) {
-            console.log(err.message);
             setInfoContent(err.message);
-            // console.log(email);
-            // console.log(password);
-            // console.log(repeatedPassword);
             setTimeout(() => {
                 setInfoContent('');
             }, 5000);
@@ -156,6 +143,7 @@ const RegisterPage = () => {
                                 fullWidth
                                 margin="normal"
                                 label="Password"
+                                inputProps={{ 'data-testid': 'password-input' }}
                                 type="password"
                                 value={password}
                                 onChange={(e) => {
@@ -167,26 +155,27 @@ const RegisterPage = () => {
                                 fullWidth
                                 margin="normal"
                                 label="Repeat Password"
+                                inputProps={{ 'data-testid': 'repeat-password-input' }}
                                 type="password"
                                 value={repeatedPassword}
                                 onChange={(e) => {
                                     setRepeatedPassword(e.target.value);
                                 }}
                             />
-                            {/* {infoContent && ( */}
-                            <Typography
-                                variant="subtitle2"
-                                sx={{
-                                    m: 0,
-                                    px: 1,
-                                    color: `${infoColor}`,
-                                    boxShadow: 'none',
-                                }}
-                            >
-                                {infoContent}
-                                {/* Something */}
-                            </Typography>
-                            {/* )} */}
+
+                            {infoContent ? (
+                                <Typography
+                                    variant="subtitle2"
+                                    sx={{
+                                        m: 0,
+                                        px: 1,
+                                        color: `${infoColor}`,
+                                        boxShadow: 'none',
+                                    }}
+                                >
+                                    {infoContent}
+                                </Typography>
+                            ) : null}
                             <Button
                                 variant="contained"
                                 fullWidth

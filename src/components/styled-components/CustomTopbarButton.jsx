@@ -14,7 +14,8 @@ const CustomTopbarButton = styled(Button)(({ theme }) => ({
             border: 'none',
         },
         '&:hover.MuiButtonBase-root.MuiButton-root ': {
-            backgroundColor: `${theme.palette.topbarHoverColor.main}`,
+            // backgroundColor: `${theme.palette.topbarHoverColor.main}`,
+            backgroundColor: theme.palette.topbarHoverColor,
         },
     },
 }));
