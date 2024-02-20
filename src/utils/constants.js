@@ -1,5 +1,5 @@
-// const API_URL = 'http://localhost:5014';
-const API_URL = 'https://weather-and-hr-logbook-api-production.up.railway.app';
+const API_URL = 'http://localhost:5014';
+// const API_URL = 'https://weather-and-hr-logbook-api-production.up.railway.app';
 
 export const API_ROUTES = {
     LOGIN: `${API_URL}/auth/login`,
@@ -27,8 +27,6 @@ export const APP_ROUTES = {
     REPORT: '/report/:reportId',
     REPORTS: '/reports',
     ADD_REPORT: '/add-report',
-    EMPLOYEES: '/employees',
-    ADD_EMPLOYEE: '/add-employee',
     VERIFICATION: '/verification/:id/:token',
     EDIT: '/edit/:id',
 };

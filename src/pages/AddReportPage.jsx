@@ -21,9 +21,9 @@ import {
     BsFillCloudsFill,
     BsFillCloudFill,
 } from 'react-icons/bs';
-import { TextField, Typography } from '@mui/material';
-import { ReportContext } from '../contexts/ReportContext.jsx';
 
+import { Typography } from '@mui/material';
+import { ReportContext } from '../contexts/ReportContext.jsx';
 import CustomTimePicker from '../components/styled-components/CustomTimePicker.jsx';
 import CustomDatePicker from '../components/styled-components/CustomDatePicker.jsx';
 import CustomButton from '../components/styled-components/CustomButton.jsx';
@@ -72,8 +72,6 @@ const AddReport = () => {
     });
 
     const handleAddReport = async () => {
-        console.log('report dawany do conteksu: ', report);
-
         try {
             reportValidation(report);
             const response = await addReport(report);
@@ -100,7 +98,6 @@ const AddReport = () => {
                 <Container
                     maxWidth="xl"
                     sx={{
-                        // border: '1px dotted pink',
                         flex: 'display',
                         flexDirection: 'column',
                         p: 2,
@@ -110,7 +107,6 @@ const AddReport = () => {
                     <Stack
                         direction="column"
                         sx={{
-                            // border: '1px solid white',
                             height: '100%',
                             display: 'flex',
                             justifyContent: 'start',
@@ -120,7 +116,6 @@ const AddReport = () => {
                         <Box
                             sx={{
                                 width: '100%',
-                                // border: '1px solid yellow'
                             }}
                         >
                             <CustomTitleTextField
@@ -138,7 +133,6 @@ const AddReport = () => {
                             direction="row"
                             column={12}
                             sx={{
-                                // border: '1px solid yellow',
                                 height: '100%',
                             }}
                         >
@@ -155,14 +149,11 @@ const AddReport = () => {
                                 <Stack
                                     sx={{
                                         width: '100%',
-                                        // border: '1px solid yellow',
-                                        // p: 2,
                                     }}
                                     spacing={1}
                                 >
                                     <Box
                                         sx={{
-                                            // border: '1px dashed pink',
                                             display: 'flex',
                                             flexDirection: 'row',
                                             width: '100%',
@@ -218,7 +209,6 @@ const AddReport = () => {
                                     </Box>
                                     <Box
                                         sx={{
-                                            // border: '1px dashed pink',
                                             display: 'flex',
                                             flexDirection: 'row',
                                             width: '100%',
@@ -286,7 +276,6 @@ const AddReport = () => {
                                     </Box>
                                     <Box
                                         sx={{
-                                            // border: '1px dashed pink',
                                             display: 'flex',
                                             flexDirection: 'row',
                                             width: '100%',
@@ -321,7 +310,6 @@ const AddReport = () => {
                                     </Box>
                                     <Box
                                         sx={{
-                                            // border: '1px dashed pink',
                                             display: 'flex',
                                             flexDirection: 'row',
                                             width: '100%',
@@ -353,7 +341,6 @@ const AddReport = () => {
                                     </Box>
                                     <Box
                                         sx={{
-                                            // border: '1px dashed pink',
                                             display: 'flex',
                                             flexDirection: 'row',
                                             width: '100%',
@@ -407,9 +394,6 @@ const AddReport = () => {
                                     }
                                     sx={{
                                         height: '100%',
-                                        // border: 1,
-                                        // backgroundColor: 'yellow',
-                                        // maxHeight: '580px',
                                         '& fieldset': {
                                             display: 'none',
                                         },

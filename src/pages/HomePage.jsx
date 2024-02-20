@@ -25,39 +25,13 @@ const Home = () => {
                     gap: '10px',
                 }}
             >
-                <Button
-                    sx={{ width: '100%' }}
-                    variant="contained"
-                    onClick={() => navigate(APP_ROUTES.REPORTS)}
-                >
+                <Button sx={{ width: '100%' }} variant="contained" onClick={() => navigate(APP_ROUTES.REPORTS)}>
                     Reports
                 </Button>
-                <Button
-                    sx={{ width: '100%' }}
-                    variant="contained"
-                    onClick={() => navigate(APP_ROUTES.ADD_REPORT)}
-                >
+                <Button sx={{ width: '100%' }} variant="contained" onClick={() => navigate(APP_ROUTES.ADD_REPORT)}>
                     Add Report
                 </Button>
-                <Button
-                    sx={{ width: '100%' }}
-                    variant="contained"
-                    onClick={() => navigate(APP_ROUTES.CALENDAR)}
-                >
-                    Calendar
-                </Button>
-                <Button
-                    sx={{ width: '100%' }}
-                    variant="contained"
-                    onClick={() => navigate(APP_ROUTES.EMPLOYEES)}
-                >
-                    Employees
-                </Button>
-                <Button
-                    sx={{ width: '100%' }}
-                    variant="contained"
-                    onClick={() => navigate(APP_ROUTES.PROJECT_INFO)}
-                >
+                <Button sx={{ width: '100%' }} variant="contained" onClick={() => navigate(APP_ROUTES.PROJECT_INFO)}>
                     Project Info
                 </Button>
             </Container>

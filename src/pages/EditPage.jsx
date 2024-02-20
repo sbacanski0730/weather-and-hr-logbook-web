@@ -237,7 +237,7 @@ const EditPage = () => {
                                             onChange={(e) =>
                                                 setEditingReport({
                                                     ...editingReport,
-                                                    sky_status: e.target.value,
+                                                    skyStatus: e.target.value,
                                                 })
                                             }
                                         >
@@ -276,7 +276,7 @@ const EditPage = () => {
                                             onChange={(e) =>
                                                 setEditingReport({
                                                     ...editingReport,
-                                                    ship_status: e.target.value,
+                                                    shipStatus: e.target.value,
                                                 })
                                             }
                                         >
@@ -307,7 +307,7 @@ const EditPage = () => {
                                             onChange={(e) =>
                                                 setEditingReport({
                                                     ...editingReport,
-                                                    wind_speed: e.target.value,
+                                                    windSpeed: e.target.value,
                                                 })
                                             }
                                         />
@@ -321,7 +321,7 @@ const EditPage = () => {
                                             onChange={(e) =>
                                                 setEditingReport({
                                                     ...editingReport,
-                                                    ship_localization: e.target.value,
+                                                    shipLocalization: e.target.value,
                                                 })
                                             }
                                         />

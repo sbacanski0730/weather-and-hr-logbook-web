@@ -3,7 +3,6 @@ import { Link as ReactLink, useNavigate } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import Badge from '@mui/material/Badge';
 import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
@@ -15,30 +14,22 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import FolderIcon from '@mui/icons-material/Folder';
 import AddIcon from '@mui/icons-material/Add';
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import PersonIcon from '@mui/icons-material/Person';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
-import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
 import DarkModeSharpIcon from '@mui/icons-material/DarkModeSharp';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { APP_ROUTES } from '../../utils/constants';
 import CustomColoredSidebarDrawer from '../styled-components/CustomColoredSidebarDrawer.jsx';
 import CustomSidebarListItem from '../styled-components/CustomSidebarListItem.jsx';
 import CustomTopbarIconButton from '../styled-components/CustomTopbarIconButton.jsx';
 import CustomTopbarButton from '../styled-components/CustomTopbarButton.jsx';
-// import { ThemeContext } from '../../App';
 import ThemeContextNew from '../../contexts/ThemeContext.jsx';
 
 const UserInterface = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [notification] = useState(0);
     const navigate = useNavigate();
 
-    // const { themeMode, toggleTheme } = useContext(ThemeContext);
     const { themeMode, toggleTheme } = useContext(ThemeContextNew);
 
     const logout = () => {
@@ -48,7 +39,6 @@ const UserInterface = () => {
 
     return (
         <>
-            {/* Topbar */}
             <AppBar
                 position="fixed"
                 sx={{
@@ -87,15 +77,6 @@ const UserInterface = () => {
                     <Stack direction="row" spacing={1}>
                         <CustomTopbarIconButton onClick={toggleTheme}>
                             {themeMode === 'dark' ? <LightModeIcon /> : <DarkModeSharpIcon />}
-                        </CustomTopbarIconButton>
-                        <CustomTopbarIconButton>
-                            {notification > 0 ? (
-                                <Badge max={10} badgeContent={notification} color="info">
-                                    <NotificationsActiveIcon />
-                                </Badge>
-                            ) : (
-                                <NotificationsIcon />
-                            )}
                         </CustomTopbarIconButton>
 
                         <CustomTopbarButton
@@ -141,21 +122,6 @@ const UserInterface = () => {
                                 name: 'Add Report',
                                 icon: <AddIcon sx={{ fontSize: '30px' }} />,
                                 path: APP_ROUTES.ADD_REPORT,
-                            },
-                            {
-                                name: 'Calendar',
-                                icon: <CalendarMonthIcon sx={{ fontSize: '30px' }} />,
-                                path: '/calendar',
-                            },
-                            {
-                                name: 'Employees',
-                                icon: <PersonIcon sx={{ fontSize: '30px' }} />,
-                                path: APP_ROUTES.EMPLOYEES,
-                            },
-                            {
-                                name: 'Add Employee',
-                                icon: <GroupAddIcon sx={{ fontSize: '30px' }} />,
-                                path: APP_ROUTES.ADD_EMPLOYEE,
                             },
                             {
                                 name: 'Project info',

@@ -18,8 +18,6 @@ import ReportsListPage from './pages/ReportsListPage.jsx';
 import Error404Page from './pages/Error404Page.jsx';
 import VerificationPage from './pages/VerificationPage.jsx';
 import EditPage from './pages/EditPage.jsx';
-import ShowEmployeesPage from './pages/ShowEmployeesPage.jsx';
-import AddEmployeePage from './pages/AddEmployeePage.jsx';
 
 import { useTheme } from './contexts/ThemeContext.jsx';
 
@@ -40,8 +38,6 @@ const routing = createBrowserRouter(
                 <Route exact path={APP_ROUTES.REPORT} element={<ReportPage />} />
                 <Route exact path={APP_ROUTES.REPORTS} element={<ReportsListPage />} />
                 <Route exact path={APP_ROUTES.EDIT} element={<EditPage />} />
-                <Route exact path={APP_ROUTES.ADD_EMPLOYEE} element={<AddEmployeePage />} />
-                <Route exact path={APP_ROUTES.EMPLOYEES} element={<ShowEmployeesPage />} />
             </Route>
         </>
     )
